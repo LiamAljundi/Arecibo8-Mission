@@ -1,38 +1,37 @@
-let referrer= document.referrer;
+console.time();
 
-const canvasHeight = window.innerHeight; 
+let referrer = document.referrer;
+
+const canvasHeight = window.innerHeight;
 canvasWidth = window.innerWidth;
 
 let audioDark;
 
-let indicator; 
-let grid; 
+let indicator;
+let grid;
 let audioHandler;
 let highlighter;
 let checkerBtn;
 
-const rowNum = 4; const colNum = 8;
+const rowNum = 4;
+const colNum = 8;
 const boxNum = rowNum * colNum;
-dim = canvasHeight / 8;
-
+let dim = canvasHeight / 8;
 
 const gridX = canvasWidth / 2 - (colNum / 2) * dim;
 gridY = canvasHeight / 2 - (rowNum / 2) * dim;
 gridW = gridX + (colNum - 1) * dim;
 gridH = gridY + (rowNum - 1) * dim;
 
-
 let boxPosX, boxPosY;
 let boxIndex;
 
-
 let highlighterPosX = gridX,
-highlighterPosY = gridY;
+  highlighterPosY = gridY;
 highlighterDim = dim;
 
 highlighterKeyPressed = false;
 highlighterKeyMoving = false;
-
 
 let figureDark = [
   0,
@@ -71,12 +70,12 @@ let figureDark = [
   1,
   1 //
 ];
-let coloredFigure = new Array(boxNum);
 
+let coloredFigure = new Array(boxNum);
 
 let isSoundOn = false;
 
-let countIn= 4;
+let countIn = 4;
 countInState = false;
 
 let frameCounter = 0;
@@ -86,7 +85,6 @@ let rowCounter = 1;
 
 function preload() {
   audioDark = loadSound("./audioDark.wav");
-  
 }
 
 function setup() {
@@ -107,6 +105,7 @@ function setup() {
   }
 }
 
+console.time();
 function draw() {
   frameCounter++;
   background(0);
@@ -115,14 +114,10 @@ function draw() {
     audioHandler.beatTimer();
     audioHandler.countIn();
     isSoundOn = audioDark.isPlaying();
-
   }
 
   for (let y = 0; y < rowNum; y++) {
-    boxPosY = gridY + (y * dim);
-    
-
- 
+    boxPosY = gridY + y * dim;
 
     /*    if (rowCounter <= y) {
       indicator.display(gridX - dim / 2, boxPosY + dim / 2);
@@ -132,7 +127,6 @@ function draw() {
 
     for (let x = 0; x < colNum; x++) {
       boxPosX = gridX + x * dim;
-      
 
       boxIndex = y * colNum + x; // find the boxIndex
 
@@ -154,7 +148,7 @@ function draw() {
 class Grid {
   constructor() {
     this.stroke = 0;
-    this.strokeW=15;
+    this.strokeW = 15;
     this.fill = "#F27294";
   }
 
@@ -206,7 +200,6 @@ class Highlighter {
       if (highlighterKeyPressed) {
         if (boxPosX == highlighterPosX && boxPosY == highlighterPosY) {
           coloredFigure[boxIndex] = (coloredFigure[boxIndex] + 1) % 2;
-          console.log("yas");
 
           highlighterKeyMoving = true;
         }
@@ -215,21 +208,18 @@ class Highlighter {
       highlighterKeyMoving = false;
     }
 
-    for (i = 0; i < coloredFigure.length; i++) {
-      if (keyIsDown(32)) {
-        highlighterKeyPressed = true;
-      } else if (!keyIsDown(32)) {
-        highlighterKeyPressed = false;
-      }
+    if (keyIsDown(32)) {
+      highlighterKeyPressed = true;
+    } else if (!keyIsDown(32)) {
+      highlighterKeyPressed = false;
+    }
 
-      if (coloredFigure[boxIndex]) {
-        fill("#2EFFFF");
-        rect(boxPosX, boxPosY, dim, dim);
-      }
+    if (coloredFigure[boxIndex]) {
+      fill("#2EFFFF");
+      rect(boxPosX, boxPosY, dim, dim);
     }
   }
 }
-
 
 class AudioHandler {
   constructor() {
@@ -241,15 +231,13 @@ class AudioHandler {
     this.textSize = 60;
     this.fill = "#2EFFFF";
     this.StrokeW = 2;
-
-    this.countInNum = 4;
   }
 
   beatTimer() {
     if (frameCounter % beat === 0) {
       countIn--;
 
-      if (countIn <= this.countInNum && countIn > 0) {
+      if (countIn <= 4 && countIn > 0) {
         countInState = true;
       } else {
         countInState = false;
@@ -261,10 +249,10 @@ class AudioHandler {
         if (colCounter >= colNum) {
           colCounter = 0;
           rowCounter++;
-          if (rowCounter >= rowNum + 1) {
-            rowCounter = 1;
-            colCounter = -1;
+          if (rowCounter > rowNum) {
             countIn = 4;
+            colCounter = -1;
+            rowCounter = 1;
           }
         }
       }
@@ -329,7 +317,9 @@ function compare() {
     alert("Wrong Answer");
   }
 }
+console.timeEnd();
 
+/* 
 function insideGrid(x, y) {
   if (x >= gridX && x <= gridW && y >= gridY && y <= gridH) {
     return true;
@@ -340,4 +330,4 @@ function insideGrid(x, y) {
 
 function uniqueArray(array) {
   return array.length === new Set(array).size;
-}
+} */
