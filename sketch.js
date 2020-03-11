@@ -1,9 +1,7 @@
-console.time();
-
 let referrer = document.referrer;
 
-const canvasHeight = window.innerHeight;
-canvasWidth = window.innerWidth;
+let canvasHeight = window.innerHeight;
+let canvasWidth = window.innerWidth;
 
 let audioDark;
 
@@ -19,69 +17,260 @@ const boxNum = rowNum * colNum;
 let dim = canvasHeight / 8;
 
 const gridX = canvasWidth / 2 - (colNum / 2) * dim;
-gridY = canvasHeight / 2 - (rowNum / 2) * dim;
-gridW = gridX + (colNum - 1) * dim;
-gridH = gridY + (rowNum - 1) * dim;
+const gridY = canvasHeight / 2 - (rowNum / 2) * dim;
+const gridW = gridX + (colNum - 1) * dim;
+const gridH = gridY + (rowNum - 1) * dim;
 
 let boxPosX, boxPosY;
 let boxIndex;
 
-let highlighterPosX = gridX,
-  highlighterPosY = gridY;
-highlighterDim = dim;
+let highlighterPosX = gridX;
+let highlighterPosY = gridY;
+let highlighterDim = dim;
 
-highlighterKeyPressed = false;
-highlighterKeyMoving = false;
+let highlighterKeyPressed = false;
+let highlighterKeyMoving = false;
 
-let figureDark = [
-  0,
-  1,
-  1,
-  0,
-  0,
-  1,
-  1,
-  1, //
 
-  0,
-  1,
-  1,
-  1,
-  1,
-  0,
-  1,
-  1, //
-
-  1,
-  1,
-  0,
-  0,
-  0,
-  1,
-  0,
-  0, //
-
-  1,
-  1,
-  0,
-  0,
-  0,
-  1,
-  1,
-  1 //
-];
 
 let coloredFigure = new Array(boxNum);
 
 let isSoundOn = false;
-
 let countIn = 4;
-countInState = false;
+let countInState = false;
 
 let frameCounter = 0;
 let beat;
 let colCounter = -1;
 let rowCounter = 1;
+
+const figures = {
+
+  dark : [
+    0,
+    1,
+    1,
+    0,
+    0,
+    1,
+    1,
+    1, //
+  
+    0,
+    1,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1, //
+  
+    1,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0, //
+  
+    1,
+    1,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1 //
+  ],
+  earth : [
+    1,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    1, //
+  
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    0,
+    0, //
+  
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    0,
+    0, //
+  
+    1,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    1, 
+  ],
+  earthquakes: [
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1, //
+  
+    1,
+    1,
+    1,
+    1,
+    0,
+    0,
+    1,
+    1, //
+  
+    1,
+    1,
+    1,
+    0,
+    0,
+    1,
+    1,
+    1, //
+  
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1, 
+  ],
+  humanity: [
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0, //
+  
+    1,
+    1,
+    1,
+    0,
+    0,
+    1,
+    1,
+    1, //
+  
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0, //
+  
+    1,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    1, 
+  ],
+  ship: [
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0, //
+  
+    1,
+    1,
+    1,
+    0,
+    0,
+    1,
+    1,
+    1, //
+  
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0, //
+  
+    1,
+    1,
+    0,
+    1,
+    1,
+    0,
+    1,
+    1, 
+  ],
+  water: [
+    0,
+    1,
+    0,
+    1,
+    1,
+    0,
+    0,
+    1, //
+  
+    1,
+    0,
+    0,
+    1,
+    1,
+    0,
+    1,
+    0, //
+  
+    0,
+    1,
+    0,
+    1,
+    1,
+    0,
+    0,
+    1, //
+  
+    1,
+    0,
+    0,
+    1,
+    1,
+    0,
+    1,
+    0, 
+  ]
+
+
+}
 
 function preload() {
   audioDark = loadSound("./audioDark.wav");
@@ -105,7 +294,6 @@ function setup() {
   }
 }
 
-console.time();
 function draw() {
   frameCounter++;
   background(0);
@@ -311,13 +499,12 @@ function keyPressed() {
 }
 
 function compare() {
-  if (JSON.stringify(coloredFigure) == JSON.stringify(figureDark)) {
+  if (JSON.stringify(coloredFigure) == JSON.stringify(figures.dark)) {
     alert("Right Answer");
   } else {
     alert("Wrong Answer");
   }
 }
-console.timeEnd();
 
 /* 
 function insideGrid(x, y) {
