@@ -286,13 +286,16 @@ function setup() {
   grid = new Grid();
   indicator = new Indicator();
   audioHandler = new AudioHandler();
-
   for (i = 0; i < boxNum; i++) {
     if (coloredFigure[i] == undefined) {
       coloredFigure[i] = 0;
     }
   }
+
 }
+
+
+
 
 function draw() {
   frameCounter++;
@@ -331,6 +334,22 @@ function draw() {
       highlighter.display();
     }
   }
+
+  controlKeysText();
+
+}
+
+function controlKeysText(){
+  let x=gridX - dim ;
+  let y=gridH + dim*2;
+
+  let instructions= 'SHIFT: start  '+'  ARROW KEYS: move  ' + '  SPACE: highlight box  ' + '  ENTER: check-answer/restart'
+
+  textSize(24);  
+  fill(255);
+  noStroke();
+  text(instructions, x, y);
+
 }
 
 class Grid {
@@ -502,9 +521,23 @@ function compare() {
   if (JSON.stringify(coloredFigure) == JSON.stringify(figures.dark)) {
     alert("Right Answer");
   } else {
+    resetCanvas();
     alert("Wrong Answer");
+
   }
 }
+function resetCanvas(){
+  boxPosX= gridX;
+  boxPosY= gridY;
+  highlighterPosX = gridX;
+  highlighterPosY = gridY;
+
+  for (i = 0; i < boxNum; i++) {
+      coloredFigure[i] = 0;
+  }
+
+}
+
 
 /* 
 function insideGrid(x, y) {
