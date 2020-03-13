@@ -275,10 +275,15 @@ const figures = {
 let figure;
 
 function preload() {
+
+  audioDark = loadSound("./audioDark.wav");
+  figure= figures.dark;
+  goTo = "https://liamaljundi.github.io/Arecibo8-Mission/firstDecoder.html";
+
   if(referrer==="https://liamaljundi.github.io/Arecibo8-Mission/story.html"){
     figure= figures.dark;
     audioDark = loadSound("./audioDark.wav");
-    goTO = "https://liamaljundi.github.io/Arecibo8-Mission/firstDecoder.html";
+    goTo = "https://liamaljundi.github.io/Arecibo8-Mission/firstDecoder.html";
   }
 }
 
@@ -528,7 +533,7 @@ function keyPressed() {
 function compare() {
   if (JSON.stringify(coloredFigure) == JSON.stringify(figure)) {
     alert("Right Answer");
-    window.open(goTO,"_self");
+    window.open(goTo,"_self");
 
   } else {
     resetCanvas();
