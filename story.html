@@ -544,9 +544,15 @@ Mission]]]]
 			(show: ?title)
 		]
 		(else-if: $transCounter is 2)[
-			(show: ?subtitle)
+			(show: ?none)
 		]
 		(else-if: $transCounter is 3)[
+			(show: ?subtitle)
+		]
+		(else-if: $transCounter is 4)[
+			(show: ?none)
+		]
+		(else-if: $transCounter is 5)[
 			(show: ?button)
 		]
 		(else:)[
