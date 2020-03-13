@@ -276,10 +276,10 @@ let figure;
 
 function preload() {
 
-  if(referrer==="http://cuartielles.com/courses/k3/pi2020/arecibo/story.html"){
+  if(referrer==="https://liamaljundi.github.io/Arecibo8-Mission/story.html"){
     figure= figures.dark;
     audioDark = loadSound("./audioDark.wav");
-    goTo = "http://cuartielles.com/courses/k3/pi2020/arecibo/firstDecoder.html";
+    goTo = "https://liamaljundi.github.io/Arecibo8-Mission/firstDecoder.html";
   }
 }
 
