@@ -31,7 +31,7 @@ let highlighterDim = dim;
 let highlighterKeyPressed = false;
 let highlighterKeyMoving = false;
 
-
+let storyNum= 0;
 
 let coloredFigure = new Array(boxNum);
 
