@@ -276,9 +276,6 @@ let figure;
 
 function preload() {
 
-  audioDark = loadSound("./audioDark.wav");
-  figure= figures.dark;
-  goTo = "https://liamaljundi.github.io/Arecibo8-Mission/firstDecoder.html";
 
   if(referrer==="https://liamaljundi.github.io/Arecibo8-Mission/story.html"){
     figure= figures.dark;
