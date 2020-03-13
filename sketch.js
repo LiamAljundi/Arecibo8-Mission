@@ -1,4 +1,5 @@
 let referrer = document.referrer;
+let goTO;
 
 let canvasHeight = window.innerHeight;
 let canvasWidth = window.innerWidth;
@@ -271,9 +272,14 @@ const figures = {
 
 
 }
+let figure;
 
 function preload() {
-  audioDark = loadSound("./audioDark.wav");
+  if(referrer==="https://liamaljundi.github.io/Arecibo8-Mission/story.html"){
+    figure= figures.dark;
+    audioDark = loadSound("./audioDark.wav");
+    goTO = "https://liamaljundi.github.io/Arecibo8-Mission/firstDecoder.html";
+  }
 }
 
 function setup() {
@@ -291,6 +297,8 @@ function setup() {
       coloredFigure[i] = 0;
     }
   }
+
+
 
 }
 
@@ -518,8 +526,10 @@ function keyPressed() {
 }
 
 function compare() {
-  if (JSON.stringify(coloredFigure) == JSON.stringify(figures.dark)) {
+  if (JSON.stringify(coloredFigure) == JSON.stringify(figure)) {
     alert("Right Answer");
+    window.open(goTO,"_self");
+
   } else {
     resetCanvas();
     alert("Wrong Answer");
