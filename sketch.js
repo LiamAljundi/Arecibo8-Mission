@@ -276,7 +276,7 @@ let figure;
 
 function preload() {
 
-  if(referrer==="https://liamaljundi.github.io/Arecibo8-Mission/story.html"){
+  if(referrer==="https://liamaljundi.github.io/Arecibo8-Mission/index.html"){
     figure= figures.dark;
     audioDark = loadSound("./audioDark.wav");
     goTo = "https://liamaljundi.github.io/Arecibo8-Mission/first-decoder/";
