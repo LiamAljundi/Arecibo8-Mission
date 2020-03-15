@@ -1,10 +1,10 @@
 let referrer = document.referrer;
-let goTO;
+let goTo;
 
 let canvasHeight = window.innerHeight;
 let canvasWidth = window.innerWidth;
 
-let audioDark;
+let audio;
 
 let indicator;
 let grid;
@@ -32,7 +32,7 @@ let highlighterDim = dim;
 let highlighterKeyPressed = false;
 let highlighterKeyMoving = false;
 
-let storyNum= 0;
+let storyNum = 0;
 
 let coloredFigure = new Array(boxNum);
 
@@ -46,17 +46,16 @@ let colCounter = -1;
 let rowCounter = 1;
 
 const figures = {
+  dark: [
+    0,
+    1,
+    1,
+    0,
+    0,
+    1,
+    1,
+    1, //
 
-  dark : [
-    0,
-    1,
-    1,
-    0,
-    0,
-    1,
-    1,
-    1, //
-  
     0,
     1,
     1,
@@ -65,7 +64,7 @@ const figures = {
     0,
     1,
     1, //
-  
+
     1,
     1,
     0,
@@ -74,7 +73,7 @@ const figures = {
     1,
     0,
     0, //
-  
+
     1,
     1,
     0,
@@ -84,7 +83,7 @@ const figures = {
     1,
     1 //
   ],
-  earth : [
+  earth: [
     1,
     0,
     0,
@@ -93,7 +92,7 @@ const figures = {
     0,
     0,
     1, //
-  
+
     0,
     0,
     1,
@@ -102,7 +101,7 @@ const figures = {
     1,
     0,
     0, //
-  
+
     0,
     0,
     1,
@@ -111,7 +110,7 @@ const figures = {
     1,
     0,
     0, //
-  
+
     1,
     0,
     0,
@@ -119,7 +118,7 @@ const figures = {
     1,
     0,
     0,
-    1, 
+    1
   ],
   earthquakes: [
     0,
@@ -130,7 +129,7 @@ const figures = {
     0,
     0,
     1, //
-  
+
     1,
     1,
     1,
@@ -139,7 +138,7 @@ const figures = {
     0,
     1,
     1, //
-  
+
     1,
     1,
     1,
@@ -148,7 +147,7 @@ const figures = {
     1,
     1,
     1, //
-  
+
     1,
     1,
     1,
@@ -156,7 +155,7 @@ const figures = {
     1,
     1,
     1,
-    1, 
+    1
   ],
   humanity: [
     0,
@@ -167,7 +166,7 @@ const figures = {
     0,
     1,
     0, //
-  
+
     1,
     1,
     1,
@@ -176,7 +175,7 @@ const figures = {
     1,
     1,
     1, //
-  
+
     0,
     1,
     0,
@@ -185,7 +184,7 @@ const figures = {
     0,
     1,
     0, //
-  
+
     1,
     0,
     1,
@@ -193,7 +192,7 @@ const figures = {
     0,
     1,
     0,
-    1, 
+    1
   ],
   ship: [
     0,
@@ -204,7 +203,7 @@ const figures = {
     0,
     0,
     0, //
-  
+
     1,
     1,
     1,
@@ -213,7 +212,7 @@ const figures = {
     1,
     1,
     1, //
-  
+
     0,
     0,
     1,
@@ -222,7 +221,7 @@ const figures = {
     1,
     0,
     0, //
-  
+
     1,
     1,
     0,
@@ -230,7 +229,7 @@ const figures = {
     1,
     0,
     1,
-    1, 
+    1
   ],
   water: [
     0,
@@ -241,7 +240,7 @@ const figures = {
     0,
     0,
     1, //
-  
+
     1,
     0,
     0,
@@ -250,7 +249,7 @@ const figures = {
     0,
     1,
     0, //
-  
+
     0,
     1,
     0,
@@ -259,7 +258,7 @@ const figures = {
     0,
     0,
     1, //
-  
+
     1,
     0,
     0,
@@ -267,19 +266,57 @@ const figures = {
     1,
     0,
     1,
-    0, 
+    0
   ]
-
-
-}
+};
 let figure;
 
 function preload() {
+  if (
+    referrer === "https://liamaljundi.github.io/Arecibo8-Mission/start.html"
+  ) {
+    figure = figures.dark;
+    audio = loadSound("./dark.wav");
+    goTo = "https://liamaljundi.github.io/Arecibo8-Mission/startToGreen.html";
+  }
 
-  if(referrer==="https://liamaljundi.github.io/Arecibo8-Mission/story.html"){
-    figure= figures.dark;
-    audioDark = loadSound("./audioDark.wav");
-    goTo = "https://liamaljundi.github.io/Arecibo8-Mission/firstDecoder.html";
+  if (
+    referrer ===
+    "https://liamaljundi.github.io/Arecibo8-Mission/startToGreen.html"
+  ) {
+    figure = figures.dark;
+    audio = loadSound("./dark.wav");
+    goTo = "https://liamaljundi.github.io/Arecibo8-Mission/greenToPurple.html";
+  }
+
+  if (
+    referrer ===
+      "https://liamaljundi.github.io/Arecibo8-Mission/greenToPurple.html" ||
+    "https://liamaljundi.github.io/Arecibo8-Mission/purple.html"
+  ) {
+    figure = figures.dark;
+    audio = loadSound("./dark.wav");
+    goTo = "https://liamaljundi.github.io/Arecibo8-Mission/purpleToOrange.html";
+  }
+
+  if (
+    referrer ===
+      "https://liamaljundi.github.io/Arecibo8-Mission/purpleToOrange.html" ||
+    "https://liamaljundi.github.io/Arecibo8-Mission/orange.html"
+  ) {
+    figure = figures.dark;
+    audio = loadSound("./dark.wav");
+    goTo = "https://liamaljundi.github.io/Arecibo8-Mission/orangeToYellow.html";
+  }
+
+  if (
+    referrer ===
+      "https://liamaljundi.github.io/Arecibo8-Mission/orangeToYellow.html" ||
+    "https://liamaljundi.github.io/Arecibo8-Mission/yellow.html"
+  ) {
+    figure = figures.dark;
+    audio = loadSound("./dark.wav");
+    goTo = "https://liamaljundi.github.io/Arecibo8-Mission/yellowToBlue.html";
   }
 }
 
@@ -287,7 +324,7 @@ function setup() {
   let canvas = createCanvas(canvasWidth, canvasHeight);
   canvas.id("canvas");
 
-  beat = 60 * (audioDark.duration() / (countIn + boxNum));
+  beat = 60 * (audio.duration() / (countIn + boxNum));
 
   highlighter = new Highlighter();
   grid = new Grid();
@@ -298,13 +335,7 @@ function setup() {
       coloredFigure[i] = 0;
     }
   }
-
-
-
 }
-
-
-
 
 function draw() {
   frameCounter++;
@@ -313,7 +344,7 @@ function draw() {
   if (isSoundOn) {
     audioHandler.beatTimer();
     audioHandler.countIn();
-    isSoundOn = audioDark.isPlaying();
+    isSoundOn = audio.isPlaying();
   }
 
   for (let y = 0; y < rowNum; y++) {
@@ -345,20 +376,22 @@ function draw() {
   }
 
   controlKeysText();
-
 }
 
-function controlKeysText(){
-  let x=gridX - dim ;
-  let y=gridH + dim*2;
+function controlKeysText() {
+  let x = gridX - dim;
+  let y = gridH + dim * 2;
 
-  let instructions= 'SHIFT: start  '+'  ARROW KEYS: move  ' + '  SPACE: highlight box  ' + '  ENTER: check-answer/restart'
+  let instructions =
+    "SHIFT: start  " +
+    "  ARROW KEYS: move  " +
+    "  SPACE: highlight box  " +
+    "  ENTER: check-answer/restart";
 
-  textSize(24);  
+  textSize(24);
   fill(255);
   noStroke();
   text(instructions, x, y);
-
 }
 
 class Grid {
@@ -514,9 +547,9 @@ function keyPressed() {
     highlighterPosY = highlighterPosY + dim;
   }
 
-  if (keyIsDown(16) && !audioDark.isPlaying()) {
+  if (keyIsDown(16) && !audio.isPlaying()) {
     isSoundOn = true;
-    audioDark.play();
+    audio.play();
   }
 
   if (keyCode === ENTER) {
@@ -530,25 +563,21 @@ function compare() {
   if (JSON.stringify(coloredFigure) == JSON.stringify(figure)) {
     alert("Right Answer");
     window.location.replace(goTo);
-
   } else {
     resetCanvas();
     alert("Wrong Answer");
-
   }
 }
-function resetCanvas(){
-  boxPosX= gridX;
-  boxPosY= gridY;
+function resetCanvas() {
+  boxPosX = gridX;
+  boxPosY = gridY;
   highlighterPosX = gridX;
   highlighterPosY = gridY;
 
   for (i = 0; i < boxNum; i++) {
-      coloredFigure[i] = 0;
+    coloredFigure[i] = 0;
   }
-
 }
-
 
 /* 
 function insideGrid(x, y) {
