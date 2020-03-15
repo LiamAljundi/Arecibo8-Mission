@@ -2037,44 +2037,7 @@ max-height:20%;
 	]
 }
 
-</tw-passagedata><tw-passagedata pid="43" name="WriteLetterLonely6" tags="Ending" position="2719,1973" size="100,100">(Insert End Credits Plus Music)</tw-passagedata><tw-passagedata pid="44" name="Coming from Decoder purple" tags="Act-5 Act-4" position="716,1187" size="200,200">(set: $transCounter to 0)\
-
-|line1)[(transition: &quot;dissolve&quot;)[Another symbol!]]
-
-|line2)[(transition: &quot;dissolve&quot;)[It&#39;s time to flip through the manual to see if Dr. Martinez had previously translated this message. ]]
-
-|line3)[(transition: &quot;dissolve&quot;)[If you think you have found the right translation, absorb the knowledge it has provided you and move on to the next act. ]]
-
-|line4)[(transition: &quot;dissolve&quot;)[[[Continue to Next Act|Act5Start]]]]
-
-
-{
-	(live: 1s)[
-		(set: $transCounter to it + 1)
-
-		(if: $transCounter is 1)[
-			(show: ?line1)
-		]
-		(else-if: $transCounter is 2)[
-			(show: ?line2)
-		]
-		(else-if: $transCounter is 3)[
-			(show: ?line3)
-		]
-		(else-if: $transCounter is 4)[
-			(show: ?line4)
-		]
-		(else-if: $transCounter is 5)[
-			(show: ?line5)
-		]
-		(else:)[
-			(stop:)
-		]
-	]
-}
-
-
-</tw-passagedata><tw-passagedata pid="45" name="PlanetThree8" tags="Act-5 Act-6" position="1524,1435" size="200,200">(set: $transCounter to 0)\
+</tw-passagedata><tw-passagedata pid="43" name="WriteLetterLonely6" tags="Ending" position="2719,1973" size="100,100">(Insert End Credits Plus Music)</tw-passagedata><tw-passagedata pid="44" name="PlanetThree8" tags="Act-5 Act-6" position="1524,1435" size="200,200">(set: $transCounter to 0)\
 
 |line1)[(transition: &quot;dissolve&quot;)[It appears to have been built at the highest altitude that exists on the moon.]]
 

@@ -1622,46 +1622,7 @@ max-height:20%;
 }
 
 
-</tw-passagedata><tw-passagedata pid="25" name="Untitled Passage" tags="" position="2787,1564" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="26" name="coming from Decoder yellow" tags="Act-6 Act-7" position="1290,756" size="200,200">(set: $transCounter to 0)\
-
-|line1)[(transition: &quot;dissolve&quot;)[Another Symbol has been revealed via the decoder!]]
-
-|line2)[(transition: &quot;dissolve&quot;)[&quot;Dr. Martinez&#39;s work is revolutionary! She deserves more credit than what&#39;s given, I hope she&#39;s getting praises on praises now back on Earth. . . But I guess they won&#39;t know how successful her theory is until I bring this all back. . .&quot; ]]
-
-|line3)[(transition: &quot;dissolve&quot;)[You are so close to the original source received initially at NASA HQ now, M13 is just a few light years away. ]]
-
-|line4)[(transition: &quot;dissolve&quot;)[Hang in there and push through, you will be acknowledged as Earth&#39;s saviour once these messages go through back to Earth. ]]
-
-|line5)[(transition: &quot;dissolve&quot;)[[[Proceed to Final Act|Act7Start]]]]
-
-
-{
-	(live: 1s)[
-		(set: $transCounter to it + 1)
-
-		(if: $transCounter is 1)[
-			(show: ?line1)
-		]
-		(else-if: $transCounter is 2)[
-			(show: ?line2)
-		]
-		(else-if: $transCounter is 3)[
-			(show: ?line3)
-		]
-		(else-if: $transCounter is 4)[
-			(show: ?line4)
-		]
-		(else-if: $transCounter is 5)[
-			(show: ?line5)
-		]
-		(else:)[
-			(stop:)
-		]
-	]
-}
-
-
-</tw-passagedata></tw-storydata>
+</tw-passagedata><tw-passagedata pid="25" name="Untitled Passage" tags="" position="2787,1564" size="100,100">Double-click this passage to edit it.</tw-passagedata></tw-storydata>
 
 <script title="Twine engine code" data-main="harlowe">"use strict";function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}var _slicedToArray=function(){function e(e,t){var n=[],r=!0,i=!1,o=void 0;try{for(var a,s=e[Symbol.iterator]();!(r=(a=s.next()).done)&&(n.push(a.value),!t||n.length!==t);r=!0);}catch(e){i=!0,o=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw o}}return n}return function(t,n){if(Array.isArray(t))return t;if(Symbol.iterator in Object(t))return e(t,n);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};!function(){/**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
