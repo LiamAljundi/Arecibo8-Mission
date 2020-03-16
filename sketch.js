@@ -279,8 +279,6 @@ function setup() {
   let canvas = createCanvas(canvasWidth, canvasHeight);
   canvas.id("canvas");
 
-  beat = 60 * (audio.duration() / (countIn + boxNum));
-
   highlighter = new Highlighter();
   grid = new Grid();
   indicator = new Indicator();
@@ -336,6 +334,10 @@ function setup() {
     goTo = false;
   
   }
+  
+    
+  beat = 60 * (audio.duration() / (countIn + boxNum));
+
 }
 
 function draw() {
