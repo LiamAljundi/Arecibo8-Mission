@@ -272,6 +272,25 @@ const figures = {
 let figure;
 
 function preload() {
+
+}
+
+function setup() {
+  let canvas = createCanvas(canvasWidth, canvasHeight);
+  canvas.id("canvas");
+
+  beat = 60 * (audio.duration() / (countIn + boxNum));
+
+  highlighter = new Highlighter();
+  grid = new Grid();
+  indicator = new Indicator();
+  audioHandler = new AudioHandler();
+  for (i = 0; i < boxNum; i++) {
+    if (coloredFigure[i] == undefined) {
+      coloredFigure[i] = 0;
+    }
+  }
+
   if (
     referrer === "https://liamaljundi.github.io/Arecibo8-Mission/start.html"
   ) {
@@ -316,23 +335,6 @@ function preload() {
     audio = loadSound("./dark.wav");
     goTo = "";
 
-  }
-}
-
-function setup() {
-  let canvas = createCanvas(canvasWidth, canvasHeight);
-  canvas.id("canvas");
-
-  beat = 60 * (audio.duration() / (countIn + boxNum));
-
-  highlighter = new Highlighter();
-  grid = new Grid();
-  indicator = new Indicator();
-  audioHandler = new AudioHandler();
-  for (i = 0; i < boxNum; i++) {
-    if (coloredFigure[i] == undefined) {
-      coloredFigure[i] = 0;
-    }
   }
 }
 
