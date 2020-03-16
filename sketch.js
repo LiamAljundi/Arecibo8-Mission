@@ -276,7 +276,7 @@ function preload() {
     referrer === "https://liamaljundi.github.io/Arecibo8-Mission/start.html"
   ) {
     figure = figures.dark;
-    audio = loadSound("./dark.wav");
+    audio = loadSound("./audio/dark.wav");
     goTo = "https://liamaljundi.github.io/Arecibo8-Mission/startToGreen.html";
   }
   
@@ -285,32 +285,44 @@ function preload() {
     "https://liamaljundi.github.io/Arecibo8-Mission/startToGreen.html"
   ) {
     figure = figures.dark;
-    audio = loadSound("./dark.wav");
+    audio = loadSound("./audio/dark.wav");
     goTo = "https://liamaljundi.github.io/Arecibo8-Mission/greenToPurple.html";
   }
   
   else if (
     referrer === "https://liamaljundi.github.io/Arecibo8-Mission/purple.html"
   ) {
-    figure = figures.dark;
-    audio = loadSound("./dark.wav");
+    figure = figures.earthquakes;
+    audio = loadSound("./audio/earthquakes.wav");
     goTo = "https://liamaljundi.github.io/Arecibo8-Mission/purpleToOrange.html";
   }
   
   else if (
     referrer === "https://liamaljundi.github.io/Arecibo8-Mission/orange.html"
   ) {
-    figure = figures.dark;
-    audio = loadSound("./dark.wav");
+    figure = figures.water;
+    audio = loadSound("./audio/water.wav");
     goTo = "https://liamaljundi.github.io/Arecibo8-Mission/orangeToYellow.html";
   }
   
   else if (
     referrer === "https://liamaljundi.github.io/Arecibo8-Mission/yellow.html"
   ) {
-    figure = figures.dark;
-    audio = loadSound("./dark.wav");
+    figure = figures.ship;
+    audio = loadSound("./audio/ship.wav");
     goTo = "https://liamaljundi.github.io/Arecibo8-Mission/yellowToBlue.html";
+    else if (
+    referrer === "https://liamaljundi.github.io/Arecibo8-Mission/yellow.html"
+  ) {
+    figure = figures.ship;
+    audio = loadSound("./audio/ship.wav");
+    goTo = "https://liamaljundi.github.io/Arecibo8-Mission/yellowToBlue.html";
+  }else if (
+    referrer === "https://liamaljundi.github.io/Arecibo8-Mission/blue.html"
+  ) {
+    figure = figures.humanity;
+    audio = loadSound("./audio/humanity.wav");
+    goTo = "https://liamaljundi.github.io/Arecibo8-Mission/blueToReturn.html";
   }else{
     figure = false;
     audio = false;

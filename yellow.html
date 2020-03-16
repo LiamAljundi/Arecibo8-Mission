@@ -711,15 +711,16 @@ max-height:20%;
 	]
 }
 
-</tw-passagedata><tw-passagedata pid="9" name="PlanetFour8" tags="Act-6 KORN8" position="1751,1200" size="100,100">(set: $transCounter to 0)\
+</tw-passagedata><tw-passagedata pid="9" name="PlanetFour8" tags="Act-6 KORN8" position="1751,1196" size="100,100">(set: $transCounter to 0)\
 
 |line1)[(transition: &quot;dissolve&quot;)[You take the Arecibo 8 on course towards the origin of the radio signals. ]]
 
-|line2)[(transition: &quot;dissolve&quot;)[You’re guided towards the mountain ranges and into the valleys. ]]
+|line2)[(transition: &quot;dissolve&quot;)[While you’re guided towards the mountain ranges and into the valleys, you see in you periphery some blue shimmering lights. But the urge to find the radio signal drives you to continue on. ]]
 
 |line3)[(transition: &quot;dissolve&quot;)[As you steer the Arecibo 8 towards the edge of the valley, you notice a giant crack in the mountain side. ]]
 
 |line4)[(transition: &quot;dissolve&quot;)[[[Continue|PlanetFour9]]]]
+|line5)[(transition: &quot;dissolve&quot;)[[[Get back and investigate the blue light|PlanetFourBlueLight]]]]
 
 {
 	(live: 1s)[
@@ -736,6 +737,9 @@ max-height:20%;
 		]
 		(else-if: $transCounter is 4)[
 			(show: ?line4)
+		]
+		(else-if: $transCounter is 5)[
+			(show: ?line5)
 		]
 		(else:)[
 			(stop:)
@@ -905,7 +909,120 @@ max-height:20%;
 }
 
 
-</tw-passagedata></tw-storydata>
+</tw-passagedata><tw-passagedata pid="15" name="PlanetFourBlueLight" tags="" position="1123,1031" size="100,100">(set: $transCounter to 0)\
+
+|line1)[(transition: &quot;dissolve&quot;)[The blue light was too captivating not to examine, it&#39;s not even that far away. The cave can be checked later, you think for yourself. ]]
+
+|line2)[(transition: &quot;dissolve&quot;)[You go back to where you saw the light, but when you arrive at the same spot there&#39;s nothing to see. It was there just a few moments ago... ]]
+
+|line3)[(transition: &quot;dissolve&quot;)[After hovering a little while, you steer the Arecibo down to the bottom of the valley. ]]
+
+|line4)[(transition: &quot;dissolve&quot;)[[[Continue|PlanetFourBlueLight2]]]]
+
+
+{
+	(live: 1s)[
+		(set: $transCounter to it + 1)
+
+		(if: $transCounter is 1)[
+			(show: ?line1)
+		]
+		(else-if: $transCounter is 2)[
+			(show: ?line2)
+		]
+		(else-if: $transCounter is 3)[
+			(show: ?line3)
+		]
+		(else-if: $transCounter is 4)[
+			(show: ?line4)
+		]
+		(else:)[
+			(stop:)
+		]
+	]
+}</tw-passagedata><tw-passagedata pid="16" name="PlanetFourBlueLight2" tags="" position="1123,1181" size="100,100">(set: $transCounter to 0)\
+
+|line1)[(transition: &quot;dissolve&quot;)[There it is again! ]]
+
+|line2)[(transition: &quot;dissolve&quot;)[You spot the shimmer of the blue lights again, it&#39;s moving around on the ground in a wave-like pattern. You fly towards it to get a closer look, but just as you&#39;re closing in, the shimmer goes away below the surface.]]
+
+|line3)[(transition: &quot;dissolve&quot;)[&quot;Wait, where did it go? ]]
+
+|line4)[(transition: &quot;dissolve&quot;)[Suddenly it shows up 50 meters away, and you try to get there before it dissappears again. Yet again, it fails. You start to feel that it&#39;s getting pointless to chase it and that time is starting to slip away. ]]
+
+|line5)[(transition: &quot;dissolve”)[[[Get back to the cave|PlanetFour10]]]]
+
+|line6)[(transition: &quot;dissolve”)[[[Continue chasing the lights|PlanetFourBlueLight3]]]]
+
+
+{
+	(live: 1s)[
+		(set: $transCounter to it + 1)
+
+		(if: $transCounter is 1)[
+			(show: ?line1)
+		]
+		(else-if: $transCounter is 2)[
+			(show: ?line2)
+		]
+		(else-if: $transCounter is 3)[
+			(show: ?line3)
+		]
+		(else-if: $transCounter is 4)[
+			(show: ?line4)
+		]
+		(else-if: $transCounter is 5)[
+			(show: ?line5)
+		]
+		(else-if: $transCounter is 6)[
+			(show: ?line6)
+		]
+		(else:)[
+			(stop:)
+		]
+	]
+}
+
+
+
+
+
+
+
+</tw-passagedata><tw-passagedata pid="17" name="PlanetFourBlueLight3" tags="" position="1119,1331" size="100,100">
+
+(set: $transCounter to 0)\
+
+|line1)[(transition: &quot;dissolve&quot;)[After a few other failed attemps, you give up, dissapointed that you couldn&#39;t get a closer view of that beautiful thing. ]]
+
+|line2)[(transition: &quot;dissolve&quot;)[What is that light? Could it be the insects that the Planet Detector found? Or is it somekind of fluid that moves?&quot; ]]
+
+|line3)[(transition: &quot;dissolve&quot;)[The captivating moment almost made you forget about the radio signal. It&#39;s time to get back to the mission. ]]
+
+|line4)[(transition: &quot;dissolve&quot;)[[[Continue|PlanetFour10]]]]
+
+
+{
+	(live: 1s)[
+		(set: $transCounter to it + 1)
+
+		(if: $transCounter is 1)[
+			(show: ?line1)
+		]
+		(else-if: $transCounter is 2)[
+			(show: ?line2)
+		]
+		(else-if: $transCounter is 3)[
+			(show: ?line3)
+		]
+		(else-if: $transCounter is 4)[
+			(show: ?line4)
+		]
+		(else:)[
+			(stop:)
+		]
+	]
+}</tw-passagedata></tw-storydata>
 
 <script title="Twine engine code" data-main="harlowe">"use strict";function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}var _slicedToArray=function(){function e(e,t){var n=[],r=!0,i=!1,o=void 0;try{for(var a,s=e[Symbol.iterator]();!(r=(a=s.next()).done)&&(n.push(a.value),!t||n.length!==t);r=!0);}catch(e){i=!0,o=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw o}}return n}return function(t,n){if(Array.isArray(t))return t;if(Symbol.iterator in Object(t))return e(t,n);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};!function(){/**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.

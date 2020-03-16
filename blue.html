@@ -420,7 +420,7 @@ tw-sidebar.redo {
 
 
 
-</tw-passagedata><tw-passagedata pid="2" name="PlanetFive1" tags="Act-7" position="2663,405" size="100,100">(set: $transCounter to 0)\
+</tw-passagedata><tw-passagedata pid="2" name="PlanetFive1" tags="Act-7" position="2079,577" size="100,100">(set: $transCounter to 0)\
 
 |line1)[(transition: &quot;dissolve&quot;)[It’s been a long journey so far. ]]
 
@@ -430,9 +430,11 @@ tw-sidebar.redo {
 
 |line4)[(transition: &quot;dissolve&quot;)[It’s tough, just waiting out for a signal to get clearer.]]
 
-|line5)[(transition: &quot;dissolve&quot;)[But the beauty of passing by galaxies and stars help keep up the mood and will for the completion of this mission.]]
+|line5)[(transition: &quot;dissolve&quot;)[But the beauty of passing by galaxies and stars help keep up the mood and will hopefully do so for the completion of this mission. As you watch the glowing palette of stars and planets outside your window you decide to take a moment and just take it all in.]]
 
 |line6)[(transition: &quot;dissolve&quot;)[[[Continue|PlanetFive2]]]]
+
+|line7)[(transition: &quot;dissolve&quot;)[[[Pick up your Harmonica|PlanetFiveDetour]]]]
 
 
 {
@@ -456,6 +458,9 @@ tw-sidebar.redo {
 		]
 		(else-if: $transCounter is 6)[
 			(show: ?line6)
+		]
+		(else-if: $transCounter is 7)[
+			(show: ?line7)
 		]
 		(else:)[
 			(stop:)
@@ -1627,7 +1632,7 @@ max-height:20%;
 			(stop:)
 		]
 	]
-}</tw-passagedata><tw-passagedata pid="25" name="Untitled Passage" tags="" position="2787,1564" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="26" name="PlanetFive21" tags="Act-7" position="2628.3333333333335,2831.6666666666665" size="200,200">(set: $transCounter to 0)\
+}</tw-passagedata><tw-passagedata pid="25" name="PlanetFive21" tags="Act-7" position="2628,2831" size="200,200">(set: $transCounter to 0)\
 
 |line1)[(transition: &quot;dissolve&quot;)[As you power up your decoder, you notice from outside the window that the creatures seem to be glancing your way.]]
 
@@ -1669,7 +1674,128 @@ max-height:20%;
 	]
 }
 
-</tw-passagedata></tw-storydata>
+</tw-passagedata><tw-passagedata pid="26" name="PlanetFiveDetour" tags="Act-7" position="2031,773" size="100,100">(set: $transCounter to 0)\
+
+|line1)[(transition: &quot;dissolve&quot;)[Not once so far on the journey have you thought to bring up the harmonica you got from you mom when you were 5 years old. It was a birthday gift you received in secret from your dad. Usually he threw out birthday gifts and toys because he didn&#39;t want you to waste time on &quot;stupid shit&quot;, as he used to say.]]
+
+|line2)[(transition: &quot;dissolve&quot;)[The harmonica was special because it was one of the few presents you managed to hold on to. It made you think about your mom and all the things she tried to do for you, spite having a tyrant of a father who did all he could to ruin the situation.]]
+
+|line3)[(transition: &quot;dissolve&quot;)[The beautiful display outside your window was the perfect patch on old wounds so why not give the old harmonica a spin and just absorb the moment. ]]
+
+|line4)[(transition: &quot;dissolve&quot;)[[[Have a snack instead|PlanetFive2]]]]
+
+|line5)[(transition: &quot;dissolve&quot;)[[[Play a tune|PlanetDetour2]]]]
+
+
+
+
+
+
+{
+	(live: 1s)[
+		(set: $transCounter to it + 1)
+
+		(if: $transCounter is 1)[
+			(show: ?line1)
+		]
+		(else-if: $transCounter is 2)[
+			(show: ?line2)
+		]
+		(else-if: $transCounter is 3)[
+			(show: ?line3)
+		]
+		(else-if: $transCounter is 4)[
+			(show: ?line4)
+		]
+		(else-if: $transCounter is 5)[
+			(show: ?line5)
+		]
+		(else:)[
+			(stop:)
+		]
+	]
+}</tw-passagedata><tw-passagedata pid="27" name="PlanetDetour2" tags="Act-7" position="2031,935" size="100,100">(set: $transCounter to 0)\
+
+|line1)[(transition: &quot;dissolve&quot;)[Not once so far on the journey have you thought to bring up the harmonica you got from you mom when you were 5 years old. It was a birthday gift you received in secret from your dad. Usually he threw out birthday gifts and toys because he didn&#39;t want you to waste time on &quot;stupid shit&quot;, as he used to say.]]
+
+|line2)[(transition: &quot;dissolve&quot;)[The harmonica was special because it was one of the few presents you managed to hold on to. It made you think about your mom and all the things she tried to do for you, spite having a tyrant of a father who did all he could to ruin the situation.]]
+
+|line3)[(transition: &quot;dissolve&quot;)[The beautiful display outside your window is the perfect patch on old wounds so why not give the old harmonica a spin and just absorb the moment. ]]
+
+
+|line5)[(transition: &quot;dissolve&quot;)[[[Play a tune|PlanetDetour3]]]]
+|line6)[(transition: &quot;dissolve&quot;)[[[Take the controls of the ship, FOCUS!|PlanetFive3]]]]
+
+
+
+
+
+
+{
+	(live: 1s)[
+		(set: $transCounter to it + 1)
+
+		(if: $transCounter is 1)[
+			(show: ?line1)
+		]
+		(else-if: $transCounter is 2)[
+			(show: ?line2)
+		]
+		(else-if: $transCounter is 3)[
+			(show: ?line3)
+		]
+		(else-if: $transCounter is 4)[
+			(show: ?line4)
+		]
+		(else-if: $transCounter is 5)[
+			(show: ?line5)
+		]
+		(else:)[
+			(stop:)
+		]
+	]
+}</tw-passagedata><tw-passagedata pid="28" name="PlanetDetour3" tags="Act-7" position="2031,1085" size="100,100">(set: $transCounter to 0)\
+
+|line1)[(transition: &quot;dissolve&quot;)[For a moment the inside of the Arecibo 8 turns into a melodic chamber as you play the chorus of the 1983 hit song Total Eclipse of the heart. It feels so good to take your mind off things for a second and just embrace the surroundings.]]
+
+|line2)[(transition: &quot;dissolve&quot;)[&quot;Once upon a time I was falling in love, but now i&#39;m only falling apart. A total eclipse of the heart.&quot;]]
+
+|line3)[(transition: &quot;dissolve&quot;)[Just as you sing the lyrics you happen to glance towards the cockpit. The Decoder has received a new message and the signal seems to be clear enough to pick up where it originates from.]]
+
+|line4)[(transition: &quot;dissolve&quot;)[You rush to the cockpit and take the controls. Finally, the moment is here to check the planet detector and find out more about the signals.]]
+
+|line5)[(transition: &quot;dissolve&quot;)[[[Run the planet detector|PlanetFive4]]]]
+
+
+
+
+
+
+
+{
+	(live: 1s)[
+		(set: $transCounter to it + 1)
+
+		(if: $transCounter is 1)[
+			(show: ?line1)
+		]
+		(else-if: $transCounter is 2)[
+			(show: ?line2)
+		]
+		(else-if: $transCounter is 3)[
+			(show: ?line3)
+		]
+		(else-if: $transCounter is 4)[
+			(show: ?line4)
+		]
+		(else-if: $transCounter is 5)[
+			(show: ?line5)
+		]
+		(else:)[
+			(stop:)
+		]
+	]
+}</tw-passagedata></tw-storydata>
 
 <script title="Twine engine code" data-main="harlowe">"use strict";function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}var _slicedToArray=function(){function e(e,t){var n=[],r=!0,i=!1,o=void 0;try{for(var a,s=e[Symbol.iterator]();!(r=(a=s.next()).done)&&(n.push(a.value),!t||n.length!==t);r=!0);}catch(e){i=!0,o=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw o}}return n}return function(t,n){if(Array.isArray(t))return t;if(Symbol.iterator in Object(t))return e(t,n);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};!function(){/**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
