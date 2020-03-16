@@ -311,7 +311,7 @@ function preload() {
     figure = figures.ship;
     audio = loadSound("./audio/ship.wav");
     goTo = "https://liamaljundi.github.io/Arecibo8-Mission/yellowToBlue.html";
-    else if (
+  }else if (
     referrer === "https://liamaljundi.github.io/Arecibo8-Mission/yellow.html"
   ) {
     figure = figures.ship;
