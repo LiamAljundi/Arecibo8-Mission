@@ -561,7 +561,7 @@ function keyPressed() {
 function compare() {
   if (JSON.stringify(coloredFigure) == JSON.stringify(figure)) {
     alert("Right Answer");
-    window.location.replace(goTo);
+    window.location.assign(goTo);
   } else {
     resetCanvas();
     alert("Wrong Answer");
