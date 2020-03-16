@@ -290,9 +290,7 @@ function preload() {
   }
 
   if (
-    referrer ===
-      "https://liamaljundi.github.io/Arecibo8-Mission/greenToPurple.html" ||
-    "https://liamaljundi.github.io/Arecibo8-Mission/purple.html"
+    referrer ==="https://liamaljundi.github.io/Arecibo8-Mission/purple.html"
   ) {
     figure = figures.dark;
     audio = loadSound("./dark.wav");
@@ -300,9 +298,7 @@ function preload() {
   }
 
   if (
-    referrer ===
-      "https://liamaljundi.github.io/Arecibo8-Mission/purpleToOrange.html" ||
-    "https://liamaljundi.github.io/Arecibo8-Mission/orange.html"
+    referrer ==="https://liamaljundi.github.io/Arecibo8-Mission/orange.html"
   ) {
     figure = figures.dark;
     audio = loadSound("./dark.wav");
@@ -310,13 +306,16 @@ function preload() {
   }
 
   if (
-    referrer ===
-      "https://liamaljundi.github.io/Arecibo8-Mission/orangeToYellow.html" ||
-    "https://liamaljundi.github.io/Arecibo8-Mission/yellow.html"
+    referrer === "https://liamaljundi.github.io/Arecibo8-Mission/yellow.html"
   ) {
     figure = figures.dark;
     audio = loadSound("./dark.wav");
     goTo = "https://liamaljundi.github.io/Arecibo8-Mission/yellowToBlue.html";
+  }else{
+    figure = figures.dark;
+    audio = loadSound("./dark.wav");
+    goTo = "";
+
   }
 }
 
