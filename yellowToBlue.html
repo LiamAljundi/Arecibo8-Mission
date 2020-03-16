@@ -11,7 +11,7 @@
 
 <tw-story></tw-story>
 
-<tw-storydata name="yellowToBlue" startnode="1" creator="Twine" creator-version="2.3.5" ifid="3C13DF54-C8DC-4A9D-933B-5E20DB2B81B7" zoom="0.25" format="Harlowe" format-version="3.1.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url('https://fonts.googleapis.com/css?family=Orbitron:700&display=swap');
+<tw-storydata name="yellowToBlue" startnode="1" creator="Twine" creator-version="2.3.5" ifid="3C13DF54-C8DC-4A9D-933B-5E20DB2B81B7" zoom="0.6" format="Harlowe" format-version="3.1.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url('https://fonts.googleapis.com/css?family=Orbitron:700&display=swap');
 
 
 tw-story {	
@@ -386,17 +386,119 @@ tw-sidebar.redo {
   from, to { border-color: transparent }
   50% { border-color: transparent step-end infinite}
 }
-</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="ADV" color="red"></tw-tag>,<tw-tag name="Act-1" color="red"></tw-tag>,<tw-tag name="Act-2" color="yellow"></tw-tag>,<tw-tag name="Act-3" color="green"></tw-tag>,<tw-tag name="Act-4" color="purple"></tw-tag>,<tw-tag name="Act-5" color="orange"></tw-tag>,<tw-tag name="Act-6" color="yellow"></tw-tag>,<tw-tag name="Act-7" color="blue"></tw-tag>,<tw-tag name="Act2" color="yellow"></tw-tag>,<tw-tag name="Act4ADV" color="red"></tw-tag>,<tw-tag name="Adventure" color="red"></tw-tag>,<tw-tag name="End-Credits" color="orange"></tw-tag>,<tw-tag name="Ending" color="yellow"></tw-tag>,<tw-tag name="Intro" color="blue"></tw-tag>,<tw-tag name="Introduction" color="blue"></tw-tag>,<tw-tag name="Lonely" color="blue"></tw-tag>,<tw-tag name="Return" color="purple"></tw-tag><tw-passagedata pid="1" name="coming from Decoder yellow" tags="Act-6 Act-7" position="1290,756" size="200,200">(set: $transCounter to 0)\
+</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="ADV" color="red"></tw-tag>,<tw-tag name="Act-1" color="red"></tw-tag>,<tw-tag name="Act-2" color="yellow"></tw-tag>,<tw-tag name="Act-3" color="green"></tw-tag>,<tw-tag name="Act-4" color="purple"></tw-tag>,<tw-tag name="Act-5" color="orange"></tw-tag>,<tw-tag name="Act-6" color="yellow"></tw-tag>,<tw-tag name="Act-7" color="blue"></tw-tag>,<tw-tag name="Act2" color="yellow"></tw-tag>,<tw-tag name="Act4ADV" color="red"></tw-tag>,<tw-tag name="Adventure" color="red"></tw-tag>,<tw-tag name="End-Credits" color="orange"></tw-tag>,<tw-tag name="Ending" color="yellow"></tw-tag>,<tw-tag name="Intro" color="blue"></tw-tag>,<tw-tag name="Introduction" color="blue"></tw-tag>,<tw-tag name="Lonely" color="blue"></tw-tag>,<tw-tag name="Return" color="purple"></tw-tag><tw-passagedata pid="1" name="01" tags="" position="1948,2212" size="100,100">(set: $transCounter to 0)\
 
-|line1)[(transition: &quot;dissolve&quot;)[Another Symbol has been revealed via the decoder!]]
+|line1)[(transition: &quot;dissolve&quot;)[Another symbol.]]
 
-|line2)[(transition: &quot;dissolve&quot;)[&quot;Dr. Martinez&#39;s work is revolutionary! She deserves more credit than what&#39;s given, I hope she&#39;s getting praises on praises now back on Earth. . . But I guess they won&#39;t know how successful her theory is until I bring this all back. . .&quot; ]]
+|line2)[(transition: &quot;dissolve&quot;)[Quickly, time is ticking, and you&#39;re flying further and further away, send the pattern back to the team and see what they say.]]
 
-|line3)[(transition: &quot;dissolve&quot;)[You are so close to the original source received initially at NASA HQ now, M13 is just a few light years away. ]]
+|line3)[(transition: &quot;dissolve&quot;)[[[Send Pattern to Earth|PlanetFour14ANSWER2]]]]
 
-|line4)[(transition: &quot;dissolve&quot;)[Hang in there and push through, you will be acknowledged as Earth&#39;s saviour once these messages go through back to Earth. ]]
 
-|line5)[(transition: &quot;dissolve&quot;)[&lt;a href=&quot;https://liamaljundi.github.io/Arecibo8-Mission/blue.html&quot;&gt;Continue to Next Act&lt;/a&gt;]]
+{
+	(live: 1s)[
+		(set: $transCounter to it + 1)
+
+		(if: $transCounter is 1)[
+			(show: ?line1)
+		]
+		(else-if: $transCounter is 2)[
+			(show: ?line2)
+		]
+		(else-if: $transCounter is 3)[
+			(show: ?line3)
+		]
+		(else:)[
+			(stop:)
+		]
+	]
+}
+
+
+</tw-passagedata><tw-passagedata pid="2" name="PlanetFour14ANSWER2" tags="" position="1948,2362" size="100,100">
+
+
+
+
+
+
+(set: $transCounter to 0)\
+
+|line1)[&lt;div class=&quot;typewriter&quot;&gt;
+  &lt;p&gt;Message Sent.&lt;/p&gt;
+&lt;/div&gt;]
+|line2)[(transition: &quot;dissolve&quot;)+(align: &quot;==&gt;&lt;==&quot;)[[[Continue|PlanetFour14ANSWER3]]]]
+
+{
+	(live: 1s)[
+		(set: $transCounter to it + 1)
+
+		(if: $transCounter is 1)[
+			(show: ?line1)
+		]
+		(else-if: $transCounter is 2)[
+			(show: ?none)
+		]
+		(else-if: $transCounter is 3)[
+			(show: ?line2)
+		]
+		(else:)[
+			(stop:)
+		]
+	]
+}
+
+
+
+
+
+
+
+
+  </tw-passagedata><tw-passagedata pid="3" name="PlanetFour14ANSWER3" tags="" position="1948,2512" size="100,100">
+
+
+
+
+
+
+(set: $transCounter to 0)\
+
+|line1)[&lt;div class=&quot;typewriter&quot;&gt;
+  &lt;p&gt;Incoming message from Earth . . .&lt;/p&gt;
+&lt;/div&gt;]
+|line2)[(transition: &quot;dissolve&quot;)+(align: &quot;==&gt;&lt;==&quot;)[[[Open message attachment|PlanetFour14ANSWER4]]]]
+
+{
+	(live: 1s)[
+		(set: $transCounter to it + 1)
+
+		(if: $transCounter is 1)[
+			(show: ?line1)
+		]
+		(else-if: $transCounter is 2)[
+			(show: ?none)
+		]
+		(else-if: $transCounter is 3)[
+			(show: ?line2)
+		]
+		(else:)[
+			(stop:)
+		]
+	]
+}
+
+
+
+
+
+
+
+
+  </tw-passagedata><tw-passagedata pid="4" name="PlanetFour14ANSWER4" tags="" position="1948,2662" size="100,100">(set: $transCounter to 0)\
+|line1)[&lt;img src=&quot;https://i.imgur.com/G20WObX.png&quot; title=&quot;source: imgur.com&quot; /&gt;]
+
+|line2)[(transition: &quot;dissolve&quot;)[[[Continue|PlanetFour14ANSWER5]]]]
 
 
 {
@@ -417,6 +519,64 @@ tw-sidebar.redo {
 		]
 		(else-if: $transCounter is 5)[
 			(show: ?line5)
+		]
+		(else:)[
+			(stop:)
+		]
+	]
+}
+
+
+&lt;style&gt; img{
+display: block;
+margin-left: auto;
+margin-right: auto;
+width: 50&amp;;
+max-width:50%;
+max-height:50%;
+} &lt;/style&gt;
+</tw-passagedata><tw-passagedata pid="5" name="PlanetFour14ANSWER5" tags="" position="1948,2812" size="100,100">(set: $transCounter to 0)\
+
+|line1)[(transition: &quot;dissolve&quot;)[Dr. Martinez has done it yet again!]]
+
+|line2)[(transition: &quot;dissolve&quot;)[&quot;Her work is revolutionary! She deserves more credit than what&#39;s given, I hope she&#39;s getting praises on praises now back on Earth, but I guess they won&#39;t know how successful her theory is until I bring this all back. . .&quot; ]]
+
+|line3)[(transition: &quot;dissolve&quot;)[&quot;The ship, could it mean this ship that I&#39;m on now? The Arecibo 8?&quot; ]]
+
+|line4)[(transition: &quot;dissolve&quot;)[You are so close to the original source received initially at NASA HQ now, M13 is just a few light years away. ]]
+
+|line5)[(transition: &quot;dissolve&quot;)[Hang in there and push through, you will be acknowledged as the first communicator with the extraterrestrial, the first of the human species, what an honor! ]]
+
+|line6)[(transition: &quot;dissolve&quot;)[&lt;a href=&quot;https://liamaljundi.github.io/Arecibo8-Mission/blue.html&quot;&gt;Continue to Next Act&lt;/a&gt;]]
+
+
+{
+	(live: 1s)[
+		(set: $transCounter to it + 1)
+
+		(if: $transCounter is 1)[
+			(show: ?line1)
+		]
+		(else-if: $transCounter is 2)[
+			(show: ?line2)
+		]
+		(else-if: $transCounter is 3)[
+			(show: ?none)
+		]
+		(else-if: $transCounter is 4)[
+			(show: ?line3)
+		]
+		(else-if: $transCounter is 5)[
+			(show: ?none)
+		]
+		(else-if: $transCounter is 6)[
+			(show: ?line4)
+		]
+		(else-if: $transCounter is 7)[
+			(show: ?line5)
+		]
+		(else-if: $transCounter is 8)[
+			(show: ?line6)
 		]
 		(else:)[
 			(stop:)

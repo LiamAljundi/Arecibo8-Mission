@@ -11,7 +11,7 @@
 
 <tw-story></tw-story>
 
-<tw-storydata name="orangeToYellow" startnode="1" creator="Twine" creator-version="2.3.5" ifid="CA6A4365-E5D3-4DDC-9F13-089F66B2C9B4" zoom="0.25" format="Harlowe" format-version="3.1.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url('https://fonts.googleapis.com/css?family=Orbitron:700&display=swap');
+<tw-storydata name="orangeToYellow" startnode="1" creator="Twine" creator-version="2.3.5" ifid="CA6A4365-E5D3-4DDC-9F13-089F66B2C9B4" zoom="0.6" format="Harlowe" format-version="3.1.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url('https://fonts.googleapis.com/css?family=Orbitron:700&display=swap');
 
 
 tw-story {	
@@ -386,17 +386,13 @@ tw-sidebar.redo {
   from, to { border-color: transparent }
   50% { border-color: transparent step-end infinite}
 }
-</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="ADV" color="red"></tw-tag>,<tw-tag name="Act-1" color="red"></tw-tag>,<tw-tag name="Act-2" color="yellow"></tw-tag>,<tw-tag name="Act-3" color="green"></tw-tag>,<tw-tag name="Act-4" color="purple"></tw-tag>,<tw-tag name="Act-5" color="orange"></tw-tag>,<tw-tag name="Act-6" color="yellow"></tw-tag>,<tw-tag name="Act-7" color="blue"></tw-tag>,<tw-tag name="Act2" color="yellow"></tw-tag>,<tw-tag name="Act4ADV" color="red"></tw-tag>,<tw-tag name="Adventure" color="red"></tw-tag>,<tw-tag name="End-Credits" color="orange"></tw-tag>,<tw-tag name="Ending" color="yellow"></tw-tag>,<tw-tag name="Intro" color="blue"></tw-tag>,<tw-tag name="Introduction" color="blue"></tw-tag>,<tw-tag name="Lonely" color="blue"></tw-tag>,<tw-tag name="Return" color="purple"></tw-tag><tw-passagedata pid="1" name="PlanetThree10ANSWER" tags="Act-5" position="1916,937" size="200,200">(set: $transCounter to 0)\
+</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="ADV" color="red"></tw-tag>,<tw-tag name="Act-1" color="red"></tw-tag>,<tw-tag name="Act-2" color="yellow"></tw-tag>,<tw-tag name="Act-3" color="green"></tw-tag>,<tw-tag name="Act-4" color="purple"></tw-tag>,<tw-tag name="Act-5" color="orange"></tw-tag>,<tw-tag name="Act-6" color="yellow"></tw-tag>,<tw-tag name="Act-7" color="blue"></tw-tag>,<tw-tag name="Act2" color="yellow"></tw-tag>,<tw-tag name="Act4ADV" color="red"></tw-tag>,<tw-tag name="Adventure" color="red"></tw-tag>,<tw-tag name="End-Credits" color="orange"></tw-tag>,<tw-tag name="Ending" color="yellow"></tw-tag>,<tw-tag name="Intro" color="blue"></tw-tag>,<tw-tag name="Introduction" color="blue"></tw-tag>,<tw-tag name="Lonely" color="blue"></tw-tag>,<tw-tag name="Return" color="purple"></tw-tag><tw-passagedata pid="1" name="01" tags="" position="2536,1962" size="100,100">(set: $transCounter to 0)\
 
 |line1)[(transition: &quot;dissolve&quot;)[And yet another symbol has been revealed!]]
 
-|line2)[(transition: &quot;dissolve&quot;)[Dr. Martinez is ingenious for breaking these codes and being able to translate them!]]
+|line2)[(transition: &quot;dissolve&quot;)[Let&#39;s see what Dr. Martinez&#39;s ingeniousness has to say this time.]]
 
-|line3)[(transition: &quot;dissolve&quot;)[Have you found the correct translation of the symbol? ]]
-
-|line4)[(transition: &quot;dissolve&quot;)[Because if you have, then it is time to move onto the next act.]]
-
-|line5)[(transition: &quot;dissolve&quot;)[&lt;a href=&quot;https://liamaljundi.github.io/Arecibo8-Mission/yellow.html&quot;&gt;Continue to Next Act&lt;/a&gt;]]
+|line3)[(transition: &quot;dissolve&quot;)[[[Send Pattern to Earth|PlanetThree10ANSWER2]]]]
 
 
 {
@@ -410,12 +406,180 @@ tw-sidebar.redo {
 			(show: ?line2)
 		]
 		(else-if: $transCounter is 3)[
+			(show: ?none)
+		]
+		(else-if: $transCounter is 4)[
 			(show: ?line3)
+		]
+		(else:)[
+			(stop:)
+		]
+	]
+}
+
+
+</tw-passagedata><tw-passagedata pid="2" name="PlanetThree10ANSWER2" tags="" position="2536,2112" size="100,100">
+
+
+
+
+
+
+(set: $transCounter to 0)\
+
+|line1)[&lt;div class=&quot;typewriter&quot;&gt;
+  &lt;p&gt;Message Sent.&lt;/p&gt;
+&lt;/div&gt;]
+|line2)[(transition: &quot;dissolve&quot;)+(align: &quot;==&gt;&lt;==&quot;)[[[Continue|PlanetThree10ANSWER3]]]]
+
+{
+	(live: 1s)[
+		(set: $transCounter to it + 1)
+
+		(if: $transCounter is 1)[
+			(show: ?line1)
+		]
+		(else-if: $transCounter is 2)[
+			(show: ?none)
+		]
+		(else-if: $transCounter is 3)[
+			(show: ?line2)
+		]
+		(else:)[
+			(stop:)
+		]
+	]
+}
+
+
+
+
+
+
+
+
+  </tw-passagedata><tw-passagedata pid="3" name="PlanetThree10ANSWER3" tags="" position="2536,2260.3333333333335" size="100,100">
+
+
+
+
+
+
+(set: $transCounter to 0)\
+
+|line1)[&lt;div class=&quot;typewriter&quot;&gt;
+  &lt;p&gt;Incoming message from Earth . . .&lt;/p&gt;
+&lt;/div&gt;]
+|line2)[(transition: &quot;dissolve&quot;)+(align: &quot;==&gt;&lt;==&quot;)[[[Open message attachment|PlanetThree10ANSWER4]]]]
+
+{
+	(live: 1s)[
+		(set: $transCounter to it + 1)
+
+		(if: $transCounter is 1)[
+			(show: ?line1)
+		]
+		(else-if: $transCounter is 2)[
+			(show: ?none)
+		]
+		(else-if: $transCounter is 3)[
+			(show: ?line2)
+		]
+		(else:)[
+			(stop:)
+		]
+	]
+}
+
+
+
+
+
+
+
+
+  </tw-passagedata><tw-passagedata pid="4" name="PlanetThree10ANSWER4" tags="" position="2536,2410.3333333333335" size="100,100">(set: $transCounter to 0)\
+|line1)[&lt;img src=&quot;https://i.imgur.com/VS5BlYN.png&quot; title=&quot;source: imgur.com&quot; /&gt;]
+
+|line2)[(transition: &quot;dissolve&quot;)[[[Continue|PlanetThree10ANSWER5]]]]
+
+
+{
+	(live: 1s)[
+		(set: $transCounter to it + 1)
+
+		(if: $transCounter is 1)[
+			(show: ?line1)
+		]
+		(else-if: $transCounter is 2)[
+			(show: ?none)
+		]
+		(else-if: $transCounter is 3)[
+			(show: ?line2)
 		]
 		(else-if: $transCounter is 4)[
 			(show: ?line4)
 		]
 		(else-if: $transCounter is 5)[
+			(show: ?line5)
+		]
+		(else:)[
+			(stop:)
+		]
+	]
+}
+
+
+&lt;style&gt; img{
+display: block;
+margin-left: auto;
+margin-right: auto;
+width: 50&amp;;
+max-width:50%;
+max-height:50%;
+} &lt;/style&gt;
+</tw-passagedata><tw-passagedata pid="5" name="PlanetThree10ANSWER5" tags="" position="2536,2560.3333333333335" size="100,100">(set: $transCounter to 0)\
+
+|line1)[(transition: &quot;dissolve&quot;)[Water? This planet . . . it&#39;s filled with it.]]
+
+|line2)[(transition: &quot;dissolve&quot;)[&quot;I guess what they mean with the message is that civilization has demolished because of the water levels rising ?&quot;]]
+
+|line3)[(transition: &quot;dissolve&quot;)[&quot;But how does that have anything to do with Earth?&quot;]]
+
+|line4)[(transition: &quot;dissolve&quot;)[&quot;I guess I&#39;ll find out more on the way.&quot;]]
+
+|line5)[(transition: &quot;dissolve&quot;)[&lt;a href=&quot;https://liamaljundi.github.io/Arecibo8-Mission/yellow.html&quot;&gt;Continue to Next Act&lt;/a&gt;]]
+
+
+{
+	(live: 1s)[
+		(set: $transCounter to it + 1)
+
+		(if: $transCounter is 1)[
+			(show: ?line1)
+		]
+		(else-if: $transCounter is 2)[
+			(show: ?none)
+		]
+		(else-if: $transCounter is 3)[
+			(show: ?line2)
+		]
+		(else-if: $transCounter is 4)[
+			(show: ?none)
+		]
+		(else-if: $transCounter is 5)[
+			(show: ?line3)
+		]
+		(else-if: $transCounter is 6)[
+			(show: ?none)
+		]
+		(else-if: $transCounter is 7)[
+			(show: ?line4)
+		]
+		(else-if: $transCounter is 8)[
+			(show: ?none)
+		]
+		(else-if: $transCounter is 9)[
 			(show: ?line5)
 		]
 		(else:)[
