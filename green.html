@@ -417,11 +417,12 @@ tw-sidebar.redo {
 	]
 }
 
-
+<audio id="audioMainTrack">
+	<source src="./audio/areciboMainTrack.wav" type="audio/wav">
+</audio>
 
 <script>
-	var audio = document.createElement('audio');
-	audio.src= "./audio/areciboMainTrack.wav";
+	let audio = document.getElementById('audioMainTrack');
 	audio.loop = true;
 	audio.play();
 </script>
