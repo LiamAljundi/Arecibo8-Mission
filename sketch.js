@@ -11,6 +11,7 @@ let grid;
 let audioHandler;
 let highlighter;
 let checkerBtn;
+let animation;
 
 const rowNum = 4;
 const colNum = 8;
@@ -35,6 +36,350 @@ let highlighterKeyMoving = false;
 let storyNum = 0;
 
 let coloredFigure = new Array(boxNum);
+
+let isFigureRight = false;
+let animationFigures = [
+  [
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1
+  ],
+  [
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    0,
+    0,
+    1,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    0,
+    0,
+    1,
+    1,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1
+  ],
+  [
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1
+  ],
+  [
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0
+  ],
+  [
+    1,
+    0,
+    1,
+    1,
+    1,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    1,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    1,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1,
+    0,
+    1
+  ],
+  [
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    1,
+    1,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0
+  ],
+  [
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    0,
+    1,
+    1,
+    0,
+    1,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0
+  ],
+  [
+    1,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0
+  ],
+  [
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0
+  ],
+  [
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    1,
+    0,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1,
+    0,
+    0,
+    1,
+    1,
+    1
+  ]
+];
 
 let isSoundOn = false;
 let countIn = 4;
@@ -271,66 +616,55 @@ const figures = {
 };
 let figure;
 
-function preload() { 
+function preload() {
   if (
     referrer === "https://liamaljundi.github.io/Arecibo8-Mission/start.html"
   ) {
     figure = figures.dark;
     audio = loadSound("./audio/dark.wav");
     goTo = "https://liamaljundi.github.io/Arecibo8-Mission/startToGreen.html";
-  }
-  
-  else if (
+  } else if (
     referrer ===
     "https://liamaljundi.github.io/Arecibo8-Mission/startToGreen.html"
   ) {
     figure = figures.dark;
     audio = loadSound("./audio/dark.wav");
     goTo = "https://liamaljundi.github.io/Arecibo8-Mission/greenToPurple.html";
-  }
-  
-  else if (
+  } else if (
     referrer === "https://liamaljundi.github.io/Arecibo8-Mission/purple.html"
   ) {
     figure = figures.earthquakes;
     audio = loadSound("./audio/earthquakes.wav");
     goTo = "https://liamaljundi.github.io/Arecibo8-Mission/purpleToOrange.html";
-  }
-  
-  else if (
+  } else if (
     referrer === "https://liamaljundi.github.io/Arecibo8-Mission/orange.html"
   ) {
     figure = figures.water;
     audio = loadSound("./audio/water.wav");
     goTo = "https://liamaljundi.github.io/Arecibo8-Mission/orangeToYellow.html";
-  }
-  
-  else if (
+  } else if (
     referrer === "https://liamaljundi.github.io/Arecibo8-Mission/yellow.html"
   ) {
     figure = figures.ship;
     audio = loadSound("./audio/ship.wav");
     goTo = "https://liamaljundi.github.io/Arecibo8-Mission/yellowToBlue.html";
-  }else if (
+  } else if (
     referrer === "https://liamaljundi.github.io/Arecibo8-Mission/yellow.html"
   ) {
     figure = figures.ship;
     audio = loadSound("./audio/ship.wav");
     goTo = "https://liamaljundi.github.io/Arecibo8-Mission/yellowToBlue.html";
-  }else if (
+  } else if (
     referrer === "https://liamaljundi.github.io/Arecibo8-Mission/blue.html"
   ) {
     figure = figures.humanity;
     audio = loadSound("./audio/humanity.wav");
     goTo = "https://liamaljundi.github.io/Arecibo8-Mission/blueToReturn.html";
-  }else{
-    figure = false;
-    audio = false;
+  } else {
+    figure = figures.dark;
+    audio = loadSound("./audio/dark.wav");
     goTo = false;
-  
   }
-  
-  
 }
 
 function setup() {
@@ -342,13 +676,13 @@ function setup() {
   grid = new Grid();
   indicator = new Indicator();
   audioHandler = new AudioHandler();
+  animation = new JuicyFeedback();
+
   for (i = 0; i < boxNum; i++) {
     if (coloredFigure[i] == undefined) {
       coloredFigure[i] = 0;
     }
   }
-    
-
 }
 
 function draw() {
@@ -359,6 +693,10 @@ function draw() {
     audioHandler.beatTimer();
     audioHandler.countIn();
     isSoundOn = audio.isPlaying();
+  }
+
+  if (isFigureRight && frameCounter% 20===0 ) {
+    animation.gridAnimation();
   }
 
   for (let y = 0; y < rowNum; y++) {
@@ -576,10 +914,15 @@ function keyPressed() {
 function compare() {
   if (JSON.stringify(coloredFigure) == JSON.stringify(figure)) {
     alert("Right Answer");
-    window.location.assign(goTo);
+    isFigureRight = true;
   } else {
+    isFigureRight = false;
     resetCanvas();
     alert("Wrong Answer");
+
+  }
+  if (isSoundOn){
+    audio.stop();
   }
 }
 function resetCanvas() {
@@ -591,6 +934,36 @@ function resetCanvas() {
   for (i = 0; i < boxNum; i++) {
     coloredFigure[i] = 0;
   }
+  frameCounter = 0
+  countIn = 4;
+  colCounter = -1;
+  rowCounter = 1;
+}
+class JuicyFeedback {
+  constructor() {}
+
+  gridAnimation() {
+
+        for(i=0; i<coloredFigure.length; i++){
+
+            if(i==0 || i==8 || i==16 || i==24){
+              arrayMove(coloredFigure, i, i+7);
+              if(i<0){
+                i= i+8;
+              }
+            }
+
+      }
+
+  
+  }
+}
+
+
+function arrayMove(arr, fromIndex, toIndex) {
+  var element = arr[fromIndex];
+  arr.splice(fromIndex, 1);
+  arr.splice(toIndex, 0, element);
 }
 
 /* 
