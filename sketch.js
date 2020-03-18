@@ -933,6 +933,7 @@ function compare() {
   if (JSON.stringify(coloredFigure) == JSON.stringify(figure)) {
     alert("Right Answer");
     isFigureRight = true;
+    window.location.assign(goTo);
   } else {
     isFigureRight = false;
     resetCanvas();
