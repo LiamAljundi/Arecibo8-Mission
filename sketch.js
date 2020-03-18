@@ -13,13 +13,13 @@ let highlighter;
 let checkerBtn;
 let animation;
 
-const rowNum = 4;
-const colNum = 8;
-const boxNum = rowNum * colNum;
+let rowNum = 4;
+let colNum = 8;
+let boxNum = rowNum * colNum;
 let dim = canvasHeight / 8;
 
 const gridX = canvasWidth / 2 - (colNum / 2) * dim;
-const gridY = canvasHeight / 2 - (rowNum / 2) * dim;
+const gridY = canvasHeight / 4;
 const gridW = gridX + (colNum - 1) * dim;
 const gridH = gridY + (rowNum - 1) * dim;
 
@@ -32,8 +32,6 @@ let highlighterDim = dim;
 
 let highlighterKeyPressed = false;
 let highlighterKeyMoving = false;
-
-let storyNum = 0;
 
 let coloredFigure = new Array(boxNum);
 
@@ -381,6 +379,10 @@ let animationFigures = [
   ]
 ];
 
+let startButton;
+
+let animationRotation = 0;
+
 let isSoundOn = false;
 let countIn = 4;
 let countInState = false;
@@ -683,6 +685,8 @@ function setup() {
       coloredFigure[i] = 0;
     }
   }
+  textAlign(CENTER);
+  startGame();
 }
 
 function draw() {
@@ -695,13 +699,19 @@ function draw() {
     isSoundOn = audio.isPlaying();
   }
 
-  if (isFigureRight && frameCounter% 20===0 ) {
-    animation.gridAnimation();
+  if (isFigureRight) {
+    if (frameCounter % 20 === 0) {
+      animation.gridAnimation();
+    }
+
+    if (frameCounter % 10 === 0) {
+      colCounter = int(random(-1, 8));
+    }
+
   }
 
   for (let y = 0; y < rowNum; y++) {
     boxPosY = gridY + y * dim;
-
     /*    if (rowCounter <= y) {
       indicator.display(gridX - dim / 2, boxPosY + dim / 2);
     } else {
@@ -731,19 +741,26 @@ function draw() {
 }
 
 function controlKeysText() {
-  let x = gridX - dim;
-  let y = gridH + dim * 2;
+  let x = canvasWidth/2;
+  let y = 30;
 
   let instructions =
-    "SHIFT: start  " +
     "  ARROW KEYS: move  " +
     "  SPACE: highlight box  " +
     "  ENTER: check-answer/restart";
 
-  textSize(24);
+  textSize(dim/5);
   fill(255);
   noStroke();
   text(instructions, x, y);
+
+}
+
+function startGame(){
+  startButton = createButton('START');
+  startButton.id('startButton');
+  startButton.position(canvasWidth/2-(canvasWidth/10), canvasHeight- (dim*1.8));
+
 }
 
 class Grid {
@@ -757,13 +774,14 @@ class Grid {
     stroke(this.stroke);
     strokeWeight(this.strokeW);
     fill(this.fill);
+    rotate(animationRotation);
     rect(x, y, dim, dim);
   }
 }
 
 class Indicator {
   constructor() {
-    this.radius = 30;
+    this.radius = dim/3;
     this.stroke = 255;
     this.strokeW = 2;
     this.fill = "#2BFF94";
@@ -919,9 +937,8 @@ function compare() {
     isFigureRight = false;
     resetCanvas();
     alert("Wrong Answer");
-
   }
-  if (isSoundOn){
+  if (isSoundOn) {
     audio.stop();
   }
 }
@@ -934,31 +951,27 @@ function resetCanvas() {
   for (i = 0; i < boxNum; i++) {
     coloredFigure[i] = 0;
   }
-  frameCounter = 0
+  frameCounter = 0;
   countIn = 4;
   colCounter = -1;
   rowCounter = 1;
 }
+
 class JuicyFeedback {
   constructor() {}
 
   gridAnimation() {
-
-        for(i=0; i<coloredFigure.length; i++){
-
-            if(i==0 || i==8 || i==16 || i==24){
-              arrayMove(coloredFigure, i, i+7);
-              if(i<0){
-                i= i+8;
-              }
-            }
-
+    for (i = 0; i < coloredFigure.length; i++) {
+      if (i == 0 || i == 8 || i == 16 || i == 24) {
+        arrayMove(coloredFigure, i, i + 7);
       }
+    }
+  }
 
-  
+  explosion() {
+
   }
 }
-
 
 function arrayMove(arr, fromIndex, toIndex) {
   var element = arr[fromIndex];
