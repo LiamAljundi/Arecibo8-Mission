@@ -12,7 +12,467 @@
 
 <tw-story></tw-story>
 
-<tw-storydata name="arecibo-yellow" startnode="1" creator="Twine" creator-version="2.3.5" ifid="33C8499B-B1C9-4ADD-865F-EFE1ABD6C393" zoom="0.25" format="Harlowe" format-version="3.1.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="ADV" color="red"></tw-tag>,<tw-tag name="Act-1" color="red"></tw-tag>,<tw-tag name="Act-2" color="yellow"></tw-tag>,<tw-tag name="Act-3" color="green"></tw-tag>,<tw-tag name="Act-4" color="purple"></tw-tag>,<tw-tag name="Act-5" color="orange"></tw-tag>,<tw-tag name="Act-6" color="yellow"></tw-tag>,<tw-tag name="Act-7" color="blue"></tw-tag>,<tw-tag name="Act2" color="yellow"></tw-tag>,<tw-tag name="Act4ADV" color="red"></tw-tag>,<tw-tag name="Adventure" color="red"></tw-tag>,<tw-tag name="End-Credits" color="orange"></tw-tag>,<tw-tag name="Ending" color="yellow"></tw-tag>,<tw-tag name="Intro" color="blue"></tw-tag>,<tw-tag name="Introduction" color="blue"></tw-tag>,<tw-tag name="Lonely" color="blue"></tw-tag>,<tw-tag name="Return" color="purple"></tw-tag><tw-passagedata pid="1" name="Act6Start" tags="Act-6 titlecard7" position="1765,23" size="100,100">(set: $transCounter to 0)\
+<tw-storydata name="arecibo-yellow" startnode="1" creator="Twine" creator-version="2.3.5" ifid="33C8499B-B1C9-4ADD-865F-EFE1ABD6C393" zoom="0.25" format="Harlowe" format-version="3.1.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">
+
+@import url('https://fonts.googleapis.com/css?family=Orbitron:700&display=swap');
+
+
+tw-story {	
+  /* The following changes the text */
+  color: greenyellow; /* Set text to green or other color */
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  /*text-shadow: 1px 1px lawngreen; /* green text shadow */
+  font-size: 20px;
+  font-family: "Orbitron","Helvetica","Arial",sans-serif;
+  letter-spacing: 0.1em;
+  
+  /* Set background to black */
+  background-color: black;
+  background-size: cover;
+}
+
+/* IMAGES FOR TITLECARD BACKGROUNDS*/
+
+
+tw-story[tags~="titlecard2"] {
+ background-image:url("https://i.imgur.com/iusOPvD.png");
+ background-size:cover;
+}
+
+tw-story[tags~="titlecard3"] {
+ background-image:url("https://i.imgur.com/PO6Ctz9.png");
+ background-size:cover;
+}
+
+tw-story[tags~="titlecard4"] {
+ background-image:url("https://i.imgur.com/WUOcGvJ.png");
+ background-size:cover;
+}
+
+tw-story[tags~="titlecard5"] {
+ background-image:url("https://i.imgur.com/XzcReFH.png");
+ background-size:cover;
+}
+
+tw-story[tags~="titlecard6"] {
+ background-image:url("https://i.imgur.com/7K83Kox.png");
+ background-size:cover;
+}
+
+tw-story[tags~="titlecard7"] {
+ background-image:url("https://i.imgur.com/JLqyAG8.png");
+ background-size:cover;
+}
+
+tw-story[tags~="titlecard8"] {
+ background-image:url("https://i.imgur.com/rVSlGlx.png");
+ background-size:cover;
+}
+
+/*BACKGROUND SCANNNER*/
+
+tw-story[tags~="scanner"] {
+ background-image:url("https://i.imgur.com/ivj9El4.png");
+ background-size:cover;
+}
+
+/*BACKGROUND LETTER*/
+
+tw-story[tags~="letter"] {
+ background-image:url("https://i.imgur.com/po2dbPS.jpg");
+ background-size:cover;
+}
+
+/*IMAGES FOR PLANET ONE BACKGROUNDS*/
+
+tw-story[tags~="AL1"] {
+ background-image:url("https://i.imgur.com/T0QJxV4.png");
+ background-size:cover;
+}
+
+tw-story[tags~="AL2"] {
+ background-image:url("https://i.imgur.com/4bh2aQW.png");
+ background-size:cover;
+}
+
+tw-story[tags~="AL3"] {
+ background-image:url("https://i.imgur.com/c893HcR.png");
+ background-size:cover;
+}
+
+tw-story[tags~="AL4"] {
+ background-image:url("https://i.imgur.com/5zffOIF.png");
+ background-size:cover;
+}
+
+tw-story[tags~="AL5"] {
+ background-image:url("https://i.imgur.com/NoodFUC.png");
+ background-size:cover;
+}
+
+tw-story[tags~="AL6"] {
+ background-image:url("https://i.imgur.com/6t2MWax.png");
+ background-size:cover;
+}
+
+
+/*IMAGES FOR PLANET TWO BACKGROUNDS*/
+
+tw-story[tags~="SIM1"] {
+ background-image:url("https://i.imgur.com/CJ1EW6B.png");
+ background-size:cover;
+}
+
+tw-story[tags~="SIM2"] {
+ background-image:url("https://i.imgur.com/qlLY2r0.png");
+ background-size:cover;
+}
+
+tw-story[tags~="SIM3"] {
+ background-image:url("https://i.imgur.com/1xJo03S.png");
+ background-size:cover;
+}
+
+tw-story[tags~="SIM4"] {
+ background-image:url("https://i.imgur.com/aNDJGTM.png");
+ background-size:cover;
+}
+
+tw-story[tags~="SIM5"] {
+ background-image:url("https://i.imgur.com/7ro8Wwu.png");
+ background-size:cover;
+}
+
+tw-story[tags~="SIM6"] {
+ background-image:url("https://i.imgur.com/Zv56jwI.png");
+ background-size:cover;
+}
+
+tw-story[tags~="SIM7"] {
+ background-image:url("https://i.imgur.com/DjOVB87.png");
+ background-size:cover;
+}
+
+tw-story[tags~="SIM8"] {
+ background-image:url("https://i.imgur.com/WF8NVXJ.png");
+ background-size:cover;
+}
+
+tw-story[tags~="SIM9"] {
+ background-image:url("https://i.imgur.com/7dNBRPz.png");
+ background-size:cover;
+}
+
+tw-story[tags~="SIM10"] {
+ background-image:url("https://i.imgur.com/NKlceaQ.png");
+ background-size:cover;
+}
+
+/*IMAGES FOR PLANET THREE BACKGROUNDS*/
+
+tw-story[tags~="MICH1"] {
+ background-image:url("https://i.imgur.com/dNZW9SG.png");
+ background-size:cover;
+}
+
+tw-story[tags~="MICH2"] {
+ background-image:url("https://i.imgur.com/8nxucMK.png");
+ background-size:cover;
+}
+
+tw-story[tags~="MICH3"] {
+ background-image:url("https://i.imgur.com/iDYzI9z.png");
+ background-size:cover;
+}
+
+tw-story[tags~="MICH4"] {
+ background-image:url("https://i.imgur.com/1RvMSz5.png");
+ background-size:cover;
+}
+
+tw-story[tags~="MICH5"] {
+ background-image:url("https://i.imgur.com/tDnkV28.png");
+ background-size:cover;
+}
+
+tw-story[tags~="MICH6"] {
+ background-image:url("https://i.imgur.com/N8GHbSK.png");
+ background-size:cover;
+}
+
+tw-story[tags~="MICH7"] {
+ background-image:url("https://i.imgur.com/PTyoWo3.png");
+ background-size:cover;
+}
+
+tw-story[tags~="MICH8"] {
+ background-image:url("https://i.imgur.com/1W00Z27.png");
+ background-size:cover;
+}
+
+tw-story[tags~="MICH9"] {
+ background-image:url("https://i.imgur.com/TYQa35i.png");
+ background-size:cover;
+}
+
+tw-story[tags~="MICH10"] {
+ background-image:url("https://i.imgur.com/qn3KmsA.png");
+ background-size:cover;
+}
+
+tw-story[tags~="MICH11"] {
+ background-image:url("https://i.imgur.com/SYebX7E.png");
+ background-size:cover;
+}
+
+tw-story[tags~="MICH12"] {
+ background-image:url("https://i.imgur.com/pNSVx1I.png");
+ background-size:cover;
+}
+
+tw-story[tags~="MICH13"] {
+ background-image:url("https://i.imgur.com/Cc8PRew.png");
+ background-size:cover;
+}
+
+tw-story[tags~="MICH14"] {
+ background-image:url("https://i.imgur.com/ruSynM1.png");
+ background-size:cover;
+}
+
+tw-story[tags~="MICH15"] {
+ background-image:url("https://i.imgur.com/dGMm2BQ.png");
+ background-size:cover;
+}
+
+tw-story[tags~="MICH16"] {
+ background-image:url("https://i.imgur.com/Gny3DmQ.png");
+ background-size:cover;
+}
+
+/*IMAGES FOR PLANET FOUR BACKGROUNDS*/
+
+tw-story[tags~="KORN1"] {
+ background-image:url("https://i.imgur.com/QJM56PR.png");
+ background-size:cover;
+}
+
+tw-story[tags~="KORN2"] {
+ background-image:url("https://i.imgur.com/vAIXNGS.png");
+ background-size:cover;
+}
+
+tw-story[tags~="KORN3"] {
+ background-image:url("https://i.imgur.com/U0keSzY.png");
+ background-size:cover;
+}
+
+tw-story[tags~="KORN4"] {
+ background-image:url("https://i.imgur.com/pLnKkDn.png");
+ background-size:cover;
+}
+
+tw-story[tags~="KORN5"] {
+ background-image:url("https://i.imgur.com/WmDVlw6.png");
+ background-size:cover;
+}
+
+tw-story[tags~="KORN6"] {
+ background-image:url("https://i.imgur.com/sDuR8yF.png");
+ background-size:cover;
+}
+
+tw-story[tags~="KORN7"] {
+ background-image:url("https://i.imgur.com/IEOh9xi.png");
+ background-size:cover;
+}
+
+tw-story[tags~="KORN8"] {
+ background-image:url("https://i.imgur.com/MO1PROd.png");
+ background-size:cover;
+}
+
+tw-story[tags~="KORN9"] {
+ background-image:url("https://i.imgur.com/9uETt81.png");
+ background-size:cover;
+}
+
+tw-story[tags~="KORN10"] {
+ background-image:url("https://i.imgur.com/tBP18mI.png");
+ background-size:cover;
+}
+
+tw-story[tags~="KORN11"] {
+ background-image:url("https://i.imgur.com/M3cnfc6.png");
+ background-size:cover;
+}
+
+tw-story[tags~="KORN12"] {
+ background-image:url("https://i.imgur.com/vFk3OLN.png");
+ background-size:cover;
+}
+
+tw-story[tags~="KORN13"] {
+ background-image:url("https://i.imgur.com/dziswHc.png");
+ background-size:cover;
+}
+
+/*IMAGES FOR ADVENTURE PLOT BACKGROUNDS*/
+
+tw-story[tags~="ADV1"] {
+ background-image:url("https://i.imgur.com/VMbjdUM.png");
+ background-size:cover;
+}
+
+tw-story[tags~="ADV2"] {
+ background-image:url("https://i.imgur.com/D5zp7NJ.png");
+ background-size:cover;
+}
+
+tw-story[tags~="ADV3"] {
+ background-image:url("https://i.imgur.com/zT8fcn9.jpg");
+ background-size:cover;
+}
+
+tw-story[tags~="ADV4"] {
+ background-image:url("https://i.imgur.com/xF5zLTM.png");
+ background-size:cover;
+}
+
+tw-story[tags~="ADV5"] {
+ background-image:url("https://i.imgur.com/DZhJlIW.png");
+ background-size:cover;
+}
+
+tw-story[tags~="ADV6"] {
+ background-image:url("https://i.imgur.com/JiTWaf5.png");
+ background-size:cover;
+}
+
+/*IMAGES FOR PLANET FIVE BACKGROUNDS*/
+
+tw-story[tags~="MKSL1"] {
+ background-image:url("https://i.imgur.com/wG9fhVW.png");
+ background-size:cover;
+}
+
+tw-story[tags~="MKSL2"] {
+ background-image:url("https://i.imgur.com/xapyNVI.png");
+ background-size:cover;
+}
+
+tw-story[tags~="MKSL3"] {
+ background-image:url("https://i.imgur.com/K5wp4zB.png");
+ background-size:cover;
+}
+
+tw-story[tags~="MKSL4"] {
+ background-image:url("https://i.imgur.com/nOe0sl2.png");
+ background-size:cover;
+}
+
+tw-story[tags~="MKSL5"] {
+ background-image:url("https://i.imgur.com/IQ3Y04h.png");
+ background-size:cover;
+}
+
+tw-story[tags~="MKSL6"] {
+ background-image:url("https://i.imgur.com/Rjss2AJ.png");
+ background-size:cover;
+}
+
+tw-story[tags~="MKSL7"] {
+ background-image:url("https://i.imgur.com/m83egLG.png");
+ background-size:cover;
+}
+
+tw-story[tags~="MKSL8"] {
+ background-image:url("https://i.imgur.com/zrpRTiM.png");
+ background-size:cover;
+}
+
+tw-story[tags~="MKSL9"] {
+ background-image:url("https://i.imgur.com/eqpXkLh.png");
+ background-size:cover;
+}
+
+tw-story[tags~="MKSL10"] {
+ background-image:url("https://i.imgur.com/P1iXXvJ.png");
+ background-size:cover;
+}
+
+/*IMAGES FOR TRANSLATIONS*/
+
+tw-story[tags~="DARK"] {
+ background-image:url("https://i.imgur.com/gSPPBM3.png");
+ background-size:cover;
+}
+
+tw-story[tags~="EARTHQUAKE"] {
+ background-image:url("https://i.imgur.com/Yxx6t9v.png");
+ background-size:cover;
+}
+
+tw-story[tags~="WATER"] {
+ background-image:url("https://i.imgur.com/VS5BlYN.png");
+ background-size:cover;
+}
+
+tw-story[tags~="SHIP"] {
+ background-image:url("https://i.imgur.com/G20WObX.png");
+ background-size:cover;
+}
+
+tw-story[tags~="HUMANITY"] {
+ background-image:url("https://i.imgur.com/fCL3nYV.png");
+ background-size:cover;
+}
+
+
+
+tw-link {
+  color:fuchsia; /* Set the link color to fuchsia pink */
+  transition: color .5s ease-in-out;
+}
+
+tw-link:hover { /* Mouse over a link & it turns hotpink */
+  color: hotpink;
+}
+
+img { /* Images won't get wider than tw-passage container */
+  max-width: 100%;
+}
+
+tw-sidebar.redo {
+  display:none; /* Hide the redo button */
+}
+
+/* DEMO-SPECIFIC STYLES */
+.typewriter p {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid transparent; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  text-align: center;
+  margin: 0 auto;
+  animation: 
+    typing 3.5s steps(30, end),
+	blink-caret .5s ;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: transparent step-end infinite}
+}
+
+
+</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="ADV" color="red"></tw-tag>,<tw-tag name="Act-1" color="red"></tw-tag>,<tw-tag name="Act-2" color="yellow"></tw-tag>,<tw-tag name="Act-3" color="green"></tw-tag>,<tw-tag name="Act-4" color="purple"></tw-tag>,<tw-tag name="Act-5" color="orange"></tw-tag>,<tw-tag name="Act-6" color="yellow"></tw-tag>,<tw-tag name="Act-7" color="blue"></tw-tag>,<tw-tag name="Act2" color="yellow"></tw-tag>,<tw-tag name="Act4ADV" color="red"></tw-tag>,<tw-tag name="Adventure" color="red"></tw-tag>,<tw-tag name="End-Credits" color="orange"></tw-tag>,<tw-tag name="Ending" color="yellow"></tw-tag>,<tw-tag name="Intro" color="blue"></tw-tag>,<tw-tag name="Introduction" color="blue"></tw-tag>,<tw-tag name="Lonely" color="blue"></tw-tag>,<tw-tag name="Return" color="purple"></tw-tag><tw-passagedata pid="1" name="Act6Start" tags="Act-6 titlecard7" position="1765,23" size="100,100">(set: $transCounter to 0)\
 
 |title)[(css: &quot;font-size: 250%;&quot;)[(align: &quot;==&gt;&lt;==&quot;)[(transition: &quot;dissolve&quot;)[ACT SIX:]]]]
 
