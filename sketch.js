@@ -649,20 +649,14 @@ function preload() {
     audio = loadSound("./audio/ship.wav");
     goTo = "https://liamaljundi.github.io/Arecibo8-Mission/yellowToBlue.html";
   } else if (
-    referrer === "https://liamaljundi.github.io/Arecibo8-Mission/yellow.html"
-  ) {
-    figure = figures.ship;
-    audio = loadSound("./audio/ship.wav");
-    goTo = "https://liamaljundi.github.io/Arecibo8-Mission/yellowToBlue.html";
-  } else if (
     referrer === "https://liamaljundi.github.io/Arecibo8-Mission/blue.html"
   ) {
     figure = figures.humanity;
     audio = loadSound("./audio/humanity.wav");
     goTo = "https://liamaljundi.github.io/Arecibo8-Mission/blueToReturn.html";
   } else {
-    figure = figures.dark;
-    audio = loadSound("./audio/dark.wav");
+    figure = figures.water;
+    audio = loadSound("./audio/water.wav");
     goTo = false;
   }
 }
@@ -670,7 +664,7 @@ function preload() {
 function setup() {
   let canvas = createCanvas(canvasWidth, canvasHeight);
   canvas.id("canvas");
-  beat = 60 * (audio.duration() / (countIn + boxNum));
+  beat = Math.round(60 * (audio.duration() / (countIn + boxNum)));
 
   highlighter = new Highlighter();
   grid = new Grid();
