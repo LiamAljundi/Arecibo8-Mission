@@ -8,8 +8,6 @@ let audio;
 let audioRightAnswer;
 let audioWrongAnswer;
 
-let rightAnswerGif;
-
 let indicator;
 let grid;
 let audioHandler;

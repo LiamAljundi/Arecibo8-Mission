@@ -1,10 +1,11 @@
-let referrer = document.referrer;
 let goTo;
 
 let canvasHeight = window.innerHeight;
 let canvasWidth = window.innerWidth;
 
 let audio;
+let audioRightAnswer;
+let audioWrongAnswer;
 
 let indicator;
 let grid;
@@ -12,7 +13,7 @@ let audioHandler;
 let highlighter;
 let checkerBtn;
 
-let rowNum = 4;
+let rowNum = 2;
 let colNum = 8;
 let boxNum = rowNum * colNum;
 let dim = canvasHeight / 8;
@@ -36,307 +37,36 @@ let coloredFigure = new Array(boxNum);
 
 let isFigureRight = false;
 
-
 let startButton;
-
-let animationRotation = 0;
+let buttonText = "start";
 
 let isSoundOn = false;
 let countIn = 4;
-let countInState = false;
+let countInState = true;
 
 let frameCounter = 0;
 let beat;
 let colCounter = -1;
 let rowCounter = 1;
 
-const figures = {
-  dark: [
-    0,
-    1,
-    1,
-    0,
-    0,
-    1,
-    1,
-    1, //
-
-    0,
-    1,
-    1,
-    1,
-    1,
-    0,
-    1,
-    1, //
-
-    1,
-    1,
-    0,
-    0,
-    0,
-    1,
-    0,
-    0, //
-
-    1,
-    1,
-    0,
-    0,
-    0,
-    1,
-    1,
-    1 //
-  ],
-  earth: [
-    1,
-    0,
-    0,
-    1,
-    1,
-    0,
-    0,
-    1, //
-
-    0,
-    0,
-    1,
-    1,
-    1,
-    1,
-    0,
-    0, //
-
-    0,
-    0,
-    1,
-    1,
-    1,
-    1,
-    0,
-    0, //
-
-    1,
-    0,
-    0,
-    1,
-    1,
-    0,
-    0,
-    1
-  ],
-  earthquakes: [
-    0,
-    0,
-    1,
-    0,
-    0,
-    0,
-    0,
-    1, //
-
-    1,
-    1,
-    1,
-    1,
-    0,
-    0,
-    1,
-    1, //
-
-    1,
-    1,
-    1,
-    0,
-    0,
-    1,
-    1,
-    1, //
-
-    1,
-    1,
-    1,
-    0,
-    1,
-    1,
-    1,
-    1
-  ],
-  humanity: [
-    0,
-    1,
-    0,
-    0,
-    0,
-    0,
-    1,
-    0, //
-
-    1,
-    1,
-    1,
-    0,
-    0,
-    1,
-    1,
-    1, //
-
-    0,
-    1,
-    0,
-    0,
-    0,
-    0,
-    1,
-    0, //
-
-    1,
-    0,
-    1,
-    0,
-    0,
-    1,
-    0,
-    1
-  ],
-  ship: [
-    0,
-    0,
-    0,
-    1,
-    1,
-    0,
-    0,
-    0, //
-
-    1,
-    1,
-    1,
-    0,
-    0,
-    1,
-    1,
-    1, //
-
-    0,
-    0,
-    1,
-    0,
-    0,
-    1,
-    0,
-    0, //
-
-    1,
-    1,
-    0,
-    1,
-    1,
-    0,
-    1,
-    1
-  ],
-  water: [
-    0,
-    1,
-    0,
-    1,
-    1,
-    0,
-    0,
-    1, //
-
-    1,
-    0,
-    0,
-    1,
-    1,
-    0,
-    1,
-    0, //
-
-    0,
-    1,
-    0,
-    1,
-    1,
-    0,
-    0,
-    1, //
-
-    1,
-    0,
-    0,
-    1,
-    1,
-    0,
-    1,
-    0
-  ]
-};
-let figure;
+let figure = [1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0];
 
 function preload() {
-  if (
-    referrer === "https://liamaljundi.github.io/Arecibo8-Mission/start.html"
-  ) {
-    figure = figures.dark;
-    audio = loadSound("./audio/dark.wav");
-    goTo = "https://liamaljundi.github.io/Arecibo8-Mission/startToGreen.html";
-  } else if (
-    referrer ===
-    "https://liamaljundi.github.io/Arecibo8-Mission/startToGreen.html"
-  ) {
-    figure = figures.dark;
-    audio = loadSound("./audio/dark.wav");
-    goTo = "https://liamaljundi.github.io/Arecibo8-Mission/greenToPurple.html";
-  } else if (
-    referrer === "https://liamaljundi.github.io/Arecibo8-Mission/purple.html"
-  ) {
-    figure = figures.earthquakes;
-    audio = loadSound("./audio/earthquakes.wav");
-    goTo = "https://liamaljundi.github.io/Arecibo8-Mission/purpleToOrange.html";
-  } else if (
-    referrer === "https://liamaljundi.github.io/Arecibo8-Mission/orange.html"
-  ) {
-    figure = figures.water;
-    audio = loadSound("./audio/water.wav");
-    goTo = "https://liamaljundi.github.io/Arecibo8-Mission/orangeToYellow.html";
-  } else if (
-    referrer === "https://liamaljundi.github.io/Arecibo8-Mission/yellow.html"
-  ) {
-    figure = figures.ship;
-    audio = loadSound("./audio/ship.wav");
-    goTo = "https://liamaljundi.github.io/Arecibo8-Mission/yellowToBlue.html";
-  } else if (
-    referrer === "https://liamaljundi.github.io/Arecibo8-Mission/yellow.html"
-  ) {
-    figure = figures.ship;
-    audio = loadSound("./audio/ship.wav");
-    goTo = "https://liamaljundi.github.io/Arecibo8-Mission/yellowToBlue.html";
-  } else if (
-    referrer === "https://liamaljundi.github.io/Arecibo8-Mission/blue.html"
-  ) {
-    figure = figures.humanity;
-    audio = loadSound("./audio/humanity.wav");
-    goTo = "https://liamaljundi.github.io/Arecibo8-Mission/blueToReturn.html";
-  } else {
-    figure = figures.dark;
-    audio = loadSound("./audio/dark.wav");
-    goTo = false;
-  }
+  audioRightAnswer = loadSound("./audio/rightAnswer.wav");
+  audioWrongAnswer = loadSound("./audio/wrongAnswer.wav");
+  audio = loadSound("./audio/trial.wav");
+  goTo = "https://liamaljundi.github.io/Arecibo8-Mission/startToGreen.html";
 }
 
 function setup() {
   let canvas = createCanvas(canvasWidth, canvasHeight);
   canvas.id("canvas");
-  beat = 60 * (audio.duration() / (countIn + boxNum));
+  beat = 60 * (0.65);
 
   highlighter = new Highlighter();
   grid = new Grid();
   indicator = new Indicator();
   audioHandler = new AudioHandler();
-  animation = new JuicyFeedback();
 
   for (i = 0; i < boxNum; i++) {
     if (coloredFigure[i] == undefined) {
@@ -344,32 +74,19 @@ function setup() {
     }
   }
   textAlign(CENTER);
-  startGame();
+  textFont("nasalizationregular");
+  createStartButton();
+  createContinueButton();
 }
 
 function draw() {
   frameCounter++;
+
   background(0);
-
-  if (isSoundOn) {
-    audioHandler.beatTimer();
-    audioHandler.countIn();
-    isSoundOn = audio.isPlaying();
-  }
-
-  if (isFigureRight) {
-    if (frameCounter % 20 === 0) {
-      animation.gridAnimation();
-    }
-
-    if (frameCounter % 10 === 0) {
-      colCounter = int(random(-1, 8));
-    }
-
-  }
 
   for (let y = 0; y < rowNum; y++) {
     boxPosY = gridY + y * dim;
+
     /*    if (rowCounter <= y) {
       indicator.display(gridX - dim / 2, boxPosY + dim / 2);
     } else {
@@ -394,31 +111,62 @@ function draw() {
       highlighter.display();
     }
   }
+  if (isSoundOn) {
+    audioHandler.beatTimer();
+    audioHandler.countIn();
+    isSoundOn = audio.isPlaying();
+  }
 
   controlKeysText();
 }
 
 function controlKeysText() {
-  let x = canvasWidth/2;
+  let x = canvasWidth / 2;
   let y = 30;
 
   let instructions =
     "  ARROW KEYS: move  " +
     "  SPACE: highlight box  " +
-    "  ENTER: check-answer/restart";
+    "  ENTER: check answer";
 
-  textSize(dim/5);
+  textSize(dim / 3);
   fill(255);
   noStroke();
   text(instructions, x, y);
-
 }
 
-function startGame(){
-  startButton = createButton('START');
-  startButton.id('startButton');
-  startButton.position(canvasWidth/2-(canvasWidth/10), canvasHeight- (dim*1.8));
+function createStartButton() {
+  startButton = createButton("Try Decoder");
+  startButton.id("tutorialButton");
+  startButton.position(
+    canvasWidth - canvasWidth/3,
+    canvasHeight - dim * 1.8
+  );
+  startButton.mousePressed(startGame);
+}
+function createContinueButton() {
+  continueButton = createButton("continue voyage");
+  continueButton.id("continueButton");
+  continueButton.position(
+    canvasWidth/30,
+    canvasHeight - dim * 1.8
+  );
+  continueButton.mousePressed(skipTutorial);
+}
 
+function startGame() {
+  if (!audio.isPlaying()) {
+    document.getElementById("startButton").innerHTML = "replay";
+    isSoundOn = true;
+    audio.play();
+  } else {
+    document.getElementById("startButton").innerHTML = "start";
+    resetCanvas();
+  }
+}
+
+function skipTutorial() {
+  window.location.assign(goTo);
 }
 
 class Grid {
@@ -432,14 +180,13 @@ class Grid {
     stroke(this.stroke);
     strokeWeight(this.strokeW);
     fill(this.fill);
-    rotate(animationRotation);
     rect(x, y, dim, dim);
   }
 }
 
 class Indicator {
   constructor() {
-    this.radius = dim/3;
+    this.radius = dim / 3;
     this.stroke = 255;
     this.strokeW = 2;
     this.fill = "#2BFF94";
@@ -500,12 +247,12 @@ class Highlighter {
 
 class AudioHandler {
   constructor() {
-    this.textX = gridW - dim * 3;
-    this.textY = gridH + dim * 2;
+    this.textX = canvasWidth / 2;
+    this.textY = canvasHeight / 2;
 
     this.textAlignX = CENTER;
     this.textAlignY = CENTER;
-    this.textSize = 60;
+    this.textSize = 200;
     this.fill = "#2EFFFF";
     this.StrokeW = 2;
   }
@@ -513,7 +260,6 @@ class AudioHandler {
   beatTimer() {
     if (frameCounter % beat === 0) {
       countIn--;
-
       if (countIn <= 4 && countIn > 0) {
         countInState = true;
       } else {
@@ -542,9 +288,10 @@ class AudioHandler {
     strokeWeight(this.StrokeW);
     fill(this.fill);
 
-    if (countIn != 0) {
-      text(countIn, this.textX, this.textY);
-    } else {
+    if (countIn > 1 && countInState) {
+      text(countIn - 1, this.textX, this.textY);
+    }
+    if (countIn === 1) {
       text("GO!", this.textX, this.textY);
     }
   }
@@ -575,11 +322,6 @@ function keyPressed() {
     highlighterPosY = highlighterPosY + dim;
   }
 
-  if (keyIsDown(16) && !audio.isPlaying()) {
-    isSoundOn = true;
-    audio.play();
-  }
-
   if (keyCode === ENTER) {
     compare();
   }
@@ -589,19 +331,20 @@ function keyPressed() {
 
 function compare() {
   if (JSON.stringify(coloredFigure) == JSON.stringify(figure)) {
-    alert("Right Answer");
+    audioRightAnswer.play();
     isFigureRight = true;
-    window.location.assign(goTo);
   } else {
+    audioWrongAnswer.play();
     isFigureRight = false;
     resetCanvas();
-    alert("Wrong Answer");
   }
   if (isSoundOn) {
     audio.stop();
   }
 }
 function resetCanvas() {
+  audio.stop();
+
   boxPosX = gridX;
   boxPosY = gridY;
   highlighterPosX = gridX;
@@ -617,36 +360,18 @@ function resetCanvas() {
 }
 
 class JuicyFeedback {
-  constructor() {}
+  constructor() {
+    this.text = "GOOD JOB";
+    this.textX = canvasWidth / 2;
+    this.textY = canvasHeight / 2;
+  }
 
-  gridAnimation() {
-    for (i = 0; i < coloredFigure.length; i++) {
-      if (i == 0 || i == 8 || i == 16 || i == 24) {
-        arrayMove(coloredFigure, i, i + 7);
-      }
+  animatedText() {
+    for (i = 0; i < 255; i++) {
+      textSize(i / 1.5);
+      fill(random(0, 255), random(0.255), i);
+      noStroke();
+      text(this.text, this.textX, this.textY);
     }
   }
-
-  explosion() {
-
-  }
 }
-
-function arrayMove(arr, fromIndex, toIndex) {
-  var element = arr[fromIndex];
-  arr.splice(fromIndex, 1);
-  arr.splice(toIndex, 0, element);
-}
-
-/* 
-function insideGrid(x, y) {
-  if (x >= gridX && x <= gridW && y >= gridY && y <= gridH) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
-function uniqueArray(array) {
-  return array.length === new Set(array).size;
-} */
