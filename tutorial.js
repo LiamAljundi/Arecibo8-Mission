@@ -19,7 +19,7 @@ let boxNum = rowNum * colNum;
 let dim = canvasHeight / 8;
 
 const gridX = canvasWidth / 2 - (colNum / 2) * dim;
-const gridY = canvasHeight / 4;
+const gridY = canvasHeight / 2.3;
 const gridW = gridX + (colNum - 1) * dim;
 const gridH = gridY + (rowNum - 1) * dim;
 
@@ -54,6 +54,8 @@ let figure = [1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0];
 function preload() {
   audioRightAnswer = loadSound("./audio/rightAnswer.wav");
   audioWrongAnswer = loadSound("./audio/wrongAnswer.wav");
+
+
   audio = loadSound("./audio/trial.wav");
   goTo = "https://liamaljundi.github.io/Arecibo8-Mission/startToGreen.html";
 }
@@ -121,18 +123,27 @@ function draw() {
 }
 
 function controlKeysText() {
-  let x = canvasWidth / 2;
-  let y = 30;
+  let x = canvasWidth / 12;
+  let y = 10;
 
-  let instructions =
-    "  ARROW KEYS: move  " +
-    "  SPACE: highlight box  " +
-    "  ENTER: check answer";
+noStroke();
+textSize(dim / 3);
+fill("#2EFFFF");
+text("ARROW KEYS: ", x*3.2, y+32);
+fill(255);
+text("to move around the grid", x*6.2, y+32);
 
-  textSize(dim / 3);
-  fill(255);
-  noStroke();
-  text(instructions, x, y);
+fill("#2EFFFF");
+text("ENTER KEY: ", x*3.2, (y+32)*2);
+fill(255);
+text("to check your answer", x*5.8, (y+32)*2);
+
+fill("#2EFFFF");
+text("SPACE BAR: ", x*3.2, (y+32)*3);
+fill(255);
+text("to highlight boxes", x*5.5, (y+32)*3);
+
+
 }
 
 function createStartButton() {
@@ -156,11 +167,11 @@ function createContinueButton() {
 
 function startGame() {
   if (!audio.isPlaying()) {
-    document.getElementById("startButton").innerHTML = "replay";
+    document.getElementById("tutorialButton").innerHTML = "replay";
     isSoundOn = true;
     audio.play();
   } else {
-    document.getElementById("startButton").innerHTML = "start";
+    document.getElementById("tutorialButton").innerHTML = "start";
     resetCanvas();
   }
 }

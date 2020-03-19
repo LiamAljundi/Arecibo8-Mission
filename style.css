@@ -140,3 +140,31 @@ body {
     z-index: 1;
 }
 
+/* div {
+    position: absolute;
+    display: block;
+    top: 10px;
+    left: 10px;
+    white-space: nowrap;
+    overflow: hidden;}
+
+img{
+    widows: 80px;
+    height: 50px;
+    padding: 0 10px 0 10px;
+}
+.normalText{
+    padding: 5px;
+    font-size: 36px;
+    color: white;
+    display: inline-block;
+
+}
+.highlightedText{
+    display: inline;
+    font-size: 36px;
+    color: #2EFFFF;
+    display: inline-block;
+
+
+} */

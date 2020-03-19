@@ -624,12 +624,6 @@ function preload() {
   audioWrongAnswer = loadSound("./audio/wrongAnswer.wav");
 
   if (
-    referrer === "https://liamaljundi.github.io/Arecibo8-Mission/start.html"
-  ) {
-    figure = figures.dark;
-    audio = loadSound("./audio/dark.wav");
-    goTo = "https://liamaljundi.github.io/Arecibo8-Mission/startToGreen.html";
-  } else if (
     referrer ===
     "https://liamaljundi.github.io/Arecibo8-Mission/startToGreen.html"
   ) {
