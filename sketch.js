@@ -5,6 +5,10 @@ let canvasHeight = window.innerHeight;
 let canvasWidth = window.innerWidth;
 
 let audio;
+let audioRightAnswer;
+let audioWrongAnswer;
+
+let rightAnswerGif;
 
 let indicator;
 let grid;
@@ -380,12 +384,11 @@ let animationFigures = [
 ];
 
 let startButton;
-
-let animationRotation = 0;
+let buttonText = "start";
 
 let isSoundOn = false;
 let countIn = 4;
-let countInState = false;
+let countInState = true;
 
 let frameCounter = 0;
 let beat;
@@ -619,6 +622,9 @@ const figures = {
 let figure;
 
 function preload() {
+  audioRightAnswer = loadSound("./audio/rightAnswer.wav");
+  audioWrongAnswer = loadSound("./audio/wrongAnswer.wav");
+
   if (
     referrer === "https://liamaljundi.github.io/Arecibo8-Mission/start.html"
   ) {
@@ -686,32 +692,18 @@ function setup() {
     }
   }
   textAlign(CENTER);
-  startGame();
+  textFont("nasalizationregular");
+  createStartButton();
 }
 
 function draw() {
   frameCounter++;
+
   background(0);
-
-  if (isSoundOn) {
-    audioHandler.beatTimer();
-    audioHandler.countIn();
-    isSoundOn = audio.isPlaying();
-  }
-
-  if (isFigureRight) {
-    if (frameCounter % 20 === 0) {
-      animation.gridAnimation();
-    }
-
-    if (frameCounter % 10 === 0) {
-      colCounter = int(random(-1, 8));
-    }
-
-  }
 
   for (let y = 0; y < rowNum; y++) {
     boxPosY = gridY + y * dim;
+
     /*    if (rowCounter <= y) {
       indicator.display(gridX - dim / 2, boxPosY + dim / 2);
     } else {
@@ -736,31 +728,65 @@ function draw() {
       highlighter.display();
     }
   }
-
+  if (isSoundOn) {
+    audioHandler.beatTimer();
+    audioHandler.countIn();
+    isSoundOn = audio.isPlaying();
+  }
   controlKeysText();
+
+  if (isFigureRight) {
+    document.getElementById("startButton").innerHTML = "continue voyage";
+
+    animation.animatedText();
+
+    if (frameCounter % 20 === 0) {
+      animation.gridAnimation();
+    }
+
+    if (frameCounter % 10 === 0) {
+      colCounter = int(random(-1, 8));
+    }
+  }
 }
 
 function controlKeysText() {
-  let x = canvasWidth/2;
+  let x = canvasWidth / 2;
   let y = 30;
 
   let instructions =
     "  ARROW KEYS: move  " +
     "  SPACE: highlight box  " +
-    "  ENTER: check-answer/restart";
+    "  ENTER: check answer";
 
-  textSize(dim/5);
+  textSize(dim / 3);
   fill(255);
   noStroke();
   text(instructions, x, y);
-
 }
 
-function startGame(){
-  startButton = createButton('START');
-  startButton.id('startButton');
-  startButton.position(canvasWidth/2-(canvasWidth/10), canvasHeight- (dim*1.8));
+function createStartButton() {
+  startButton = createButton("start");
+  startButton.id("startButton");
+  startButton.position(
+    canvasWidth / 2 - canvasWidth / 10,
+    canvasHeight - dim * 1.8
+  );
+  startButton.mousePressed(startGame);
+}
 
+function startGame() {
+  if (!audio.isPlaying() && !isFigureRight) {
+    document.getElementById("startButton").innerHTML = "restart";
+    isSoundOn = true;
+    audio.play();
+
+  }else if (isFigureRight) {
+    window.location.assign(goTo);
+  } else {
+    document.getElementById("startButton").innerHTML = "start";
+    resetCanvas();
+  }
 }
 
 class Grid {
@@ -774,14 +800,13 @@ class Grid {
     stroke(this.stroke);
     strokeWeight(this.strokeW);
     fill(this.fill);
-    rotate(animationRotation);
     rect(x, y, dim, dim);
   }
 }
 
 class Indicator {
   constructor() {
-    this.radius = dim/3;
+    this.radius = dim / 3;
     this.stroke = 255;
     this.strokeW = 2;
     this.fill = "#2BFF94";
@@ -842,12 +867,12 @@ class Highlighter {
 
 class AudioHandler {
   constructor() {
-    this.textX = gridW - dim * 3;
-    this.textY = gridH + dim * 2;
+    this.textX = canvasWidth / 2;
+    this.textY = canvasHeight / 2;
 
     this.textAlignX = CENTER;
     this.textAlignY = CENTER;
-    this.textSize = 60;
+    this.textSize = 200;
     this.fill = "#2EFFFF";
     this.StrokeW = 2;
   }
@@ -855,7 +880,6 @@ class AudioHandler {
   beatTimer() {
     if (frameCounter % beat === 0) {
       countIn--;
-
       if (countIn <= 4 && countIn > 0) {
         countInState = true;
       } else {
@@ -884,9 +908,10 @@ class AudioHandler {
     strokeWeight(this.StrokeW);
     fill(this.fill);
 
-    if (countIn != 0) {
-      text(countIn, this.textX, this.textY);
-    } else {
+    if (countIn > 1 && countInState) {
+      text(countIn - 1, this.textX, this.textY);
+    }
+    if (countIn === 1) {
       text("GO!", this.textX, this.textY);
     }
   }
@@ -917,11 +942,6 @@ function keyPressed() {
     highlighterPosY = highlighterPosY + dim;
   }
 
-  if (keyIsDown(16) && !audio.isPlaying()) {
-    isSoundOn = true;
-    audio.play();
-  }
-
   if (keyCode === ENTER) {
     compare();
   }
@@ -931,19 +951,20 @@ function keyPressed() {
 
 function compare() {
   if (JSON.stringify(coloredFigure) == JSON.stringify(figure)) {
-    alert("Right Answer");
+    audioRightAnswer.play();
     isFigureRight = true;
-    window.location.assign(goTo);
   } else {
+    audioWrongAnswer.play();
     isFigureRight = false;
     resetCanvas();
-    alert("Wrong Answer");
   }
   if (isSoundOn) {
     audio.stop();
   }
 }
 function resetCanvas() {
+  audio.stop();
+
   boxPosX = gridX;
   boxPosY = gridY;
   highlighterPosX = gridX;
@@ -959,7 +980,11 @@ function resetCanvas() {
 }
 
 class JuicyFeedback {
-  constructor() {}
+  constructor() {
+    this.text = "GOOD JOB";
+    this.textX = canvasWidth / 2;
+    this.textY = canvasHeight / 2;
+  }
 
   gridAnimation() {
     for (i = 0; i < coloredFigure.length; i++) {
@@ -969,8 +994,13 @@ class JuicyFeedback {
     }
   }
 
-  explosion() {
-
+  animatedText() {
+    for (i = 0; i < 255; i++) {
+      textSize(i / 1.5);
+      fill(random(0, 255), random(0.255), i);
+      noStroke();
+      text(this.text, this.textX, this.textY);
+    }
   }
 }
 
