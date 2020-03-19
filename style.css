@@ -11,6 +11,7 @@ html,
 body {
     height: 100%;
     font-family: 'nasalizationregular' ;
+    cursor: url('./img/rocketcursor.png'), auto;	
 
 }
 
@@ -52,6 +53,8 @@ body {
     border-radius: 50px;
     border-color: #2EFFFF;
     transition: all 0.3s ease 0s;
+    cursor: url('./img/rocketcursor.png'), auto;	
+
     }
     
 @media only screen and (min-width: 750px) {
