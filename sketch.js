@@ -506,42 +506,10 @@ const figures = {
     1
   ],
   humanity: [
-    0,
-    1,
-    0,
-    0,
-    0,
-    0,
-    1,
-    0, //
-
-    1,
-    1,
-    1,
-    0,
-    0,
-    1,
-    1,
-    1, //
-
-    0,
-    1,
-    0,
-    0,
-    0,
-    0,
-    1,
-    0, //
-
-    1,
-    0,
-    1,
-    0,
-    0,
-    1,
-    0,
-    1
-  ],
+    0, 1, 0, 0, 0, 0, 1, 0, //
+     1, 0, 1, 0, 0, 1, 0, 1, //
+      0, 1, 0, 0, 0, 0, 1, 0, //
+       1, 0, 1, 0, 0, 1, 0, 1],
   ship: [
     0,
     0,
@@ -655,8 +623,8 @@ function preload() {
     audio = loadSound("./audio/humanity.wav");
     goTo = "https://liamaljundi.github.io/Arecibo8-Mission/blueToReturn.html";
   } else {
-    figure = figures.water;
-    audio = loadSound("./audio/water.wav");
+    figure = figures.dark;
+    audio = loadSound("./audio/dark.wav");
     goTo = false;
   }
 }
@@ -664,7 +632,7 @@ function preload() {
 function setup() {
   let canvas = createCanvas(canvasWidth, canvasHeight);
   canvas.id("canvas");
-  beat = Math.round(60 * (audio.duration() / (countIn + boxNum)));
+  beat = Math.floor(60 * (audio.duration() / (countIn + boxNum)));
 
   highlighter = new Highlighter();
   grid = new Grid();
@@ -722,7 +690,7 @@ function draw() {
   controlKeysText();
 
   if (isFigureRight) {
-    document.getElementById("startButton").innerHTML = "continue voyage";
+    document.getElementById("startButton").innerHTML = "continue";
 
     animation.animatedText();
 
