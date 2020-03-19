@@ -12,6 +12,7 @@ let grid;
 let audioHandler;
 let highlighter;
 let checkerBtn;
+let animation;
 
 let rowNum = 2;
 let colNum = 8;
@@ -69,6 +70,8 @@ function setup() {
   grid = new Grid();
   indicator = new Indicator();
   audioHandler = new AudioHandler();
+  animation = new JuicyFeedback();
+
 
   for (i = 0; i < boxNum; i++) {
     if (coloredFigure[i] == undefined) {
@@ -120,6 +123,15 @@ function draw() {
   }
 
   controlKeysText();
+
+  if(isFigureRight && JSON.stringify(coloredFigure) == JSON.stringify(figure)){
+
+    animation.animatedTextRight();
+
+    if (frameCounter % 10 === 0) {
+      colCounter = int(random(-1, 8));
+    }
+  }
 }
 
 function controlKeysText() {
@@ -166,13 +178,13 @@ function createContinueButton() {
 }
 
 function startGame() {
+  resetCanvas();
   if (!audio.isPlaying()) {
     document.getElementById("tutorialButton").innerHTML = "replay";
     isSoundOn = true;
     audio.play();
   } else {
     document.getElementById("tutorialButton").innerHTML = "start";
-    resetCanvas();
   }
 }
 
@@ -372,17 +384,19 @@ function resetCanvas() {
 
 class JuicyFeedback {
   constructor() {
-    this.text = "GOOD JOB";
+    this.textRight = "GOOD JOB";
+    this.textWrong= "Try Again"
     this.textX = canvasWidth / 2;
     this.textY = canvasHeight / 2;
   }
 
-  animatedText() {
+  animatedTextRight() {
     for (i = 0; i < 255; i++) {
       textSize(i / 1.5);
       fill(random(0, 255), random(0.255), i);
       noStroke();
-      text(this.text, this.textX, this.textY);
+      text(this.textRight, this.textX, this.textY);
     }
   }
+
 }
