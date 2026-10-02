@@ -58,7 +58,7 @@ function preload() {
 
 
   audio = loadSound("./audio/trial.wav");
-  goTo = "https://liamaljundi.github.io/Arecibo8-Mission/startToGreen.html";
+  goTo = "./startToGreen.html";
 }
 
 function setup() {

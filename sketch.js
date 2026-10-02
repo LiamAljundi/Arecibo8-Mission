@@ -592,36 +592,35 @@ function preload() {
   audioWrongAnswer = loadSound("./audio/wrongAnswer.wav");
 
   if (
-    referrer ===
-    "https://liamaljundi.github.io/Arecibo8-Mission/startToGreen.html"
+    referrer.endsWith("/startToGreen.html")
   ) {
     figure = figures.dark;
     audio = loadSound("./audio/dark.wav");
-    goTo = "https://liamaljundi.github.io/Arecibo8-Mission/greenToPurple.html";
+    goTo = "./greenToPurple.html";
   } else if (
-    referrer === "https://liamaljundi.github.io/Arecibo8-Mission/purple.html"
+    referrer.endsWith("/purple.html")
   ) {
     figure = figures.earthquakes;
     audio = loadSound("./audio/earthquakes.wav");
-    goTo = "https://liamaljundi.github.io/Arecibo8-Mission/purpleToOrange.html";
+    goTo = "./purpleToOrange.html";
   } else if (
-    referrer === "https://liamaljundi.github.io/Arecibo8-Mission/orange.html"
+    referrer.endsWith("/orange.html")
   ) {
     figure = figures.water;
     audio = loadSound("./audio/water.wav");
-    goTo = "https://liamaljundi.github.io/Arecibo8-Mission/orangeToYellow.html";
+    goTo = "./orangeToYellow.html";
   } else if (
-    referrer === "https://liamaljundi.github.io/Arecibo8-Mission/yellow.html"
+    referrer.endsWith("/yellow.html")
   ) {
     figure = figures.ship;
     audio = loadSound("./audio/ship.wav");
-    goTo = "https://liamaljundi.github.io/Arecibo8-Mission/yellowToBlue.html";
+    goTo = "./yellowToBlue.html";
   } else if (
-    referrer === "https://liamaljundi.github.io/Arecibo8-Mission/blue.html"
+    referrer.endsWith("/blue.html")
   ) {
     figure = figures.humanity;
     audio = loadSound("./audio/humanity.wav");
-    goTo = "https://liamaljundi.github.io/Arecibo8-Mission/blueToReturn.html";
+    goTo = "./blueToReturn.html";
   } else {
     figure = figures.dark;
     audio = loadSound("./audio/dark.wav");
