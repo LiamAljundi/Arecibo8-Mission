@@ -1,10 +1,10 @@
-# Arecibo 9 Mission
+# Arecibo 8 Mission
 
 A sci-fi interactive fiction game about exploring planets and decoding alien radio
 messages. I made it for a game-design essay at Malmö University (2020) that asks
 **how to overcome the lack of choices in interactive fiction games**.
 
-- **Play it:** [liamaljundi.github.io/Arecibo9-Mission](https://liamaljundi.github.io/Arecibo9-Mission/start.html)
+- **Play it:** [liamaljundi.github.io/Arecibo8-Mission](https://liamaljundi.github.io/Arecibo8-Mission/start.html)
 - **Read the essay:** [ESSAY.md](ESSAY.md)
 - **More of my work:** [liamaljundi.com](https://www.liamaljundi.com)
 

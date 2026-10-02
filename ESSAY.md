@@ -3,8 +3,6 @@
 *Game design · Interactive fiction · Choice making*
 Liam Aljundi, Malmö University (2020)
 
-> Written while the game was still called *Arecibo 8*; the name is kept as it was.
-
 ## Introduction
 
 Interactive fiction (IF) are text-based adventures that players can interact with (Jackson-Mead & Wheeler, 2011, pp. 59-66). IF games existed since the early 1960s, the more popular ones were introduced since the mid 1970s. They are considered less popular nowadays with the existence of more high-end graphic games. However, IF games still have a big community of fans who are highly active on online platforms. I found the techniques and methods used in designing IF games very interesting, not only for designing IF games but for designing games in general. Furthermore, the late Black Mirror movie (Black Mirror: Bandersnatch, 2018) showed that IF can be very successful in movies. One of the phenomena that fascinates me the most about IF is giving the player the freedom to experience the story based on their own choices and interactions. This also made me wonder about the difference between linear stories, IF stories and IF games. More importantly; what makes an IF game different from an IF story?
